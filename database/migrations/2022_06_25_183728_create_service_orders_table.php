@@ -18,7 +18,7 @@ class CreateServiceOrdersTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
             $table->unsignedBigInteger('servicetype_id');
-            $table->foreign('servicetype_id')->references('id')->on('services_types');
+            $table->foreign('servicetype_id')->references('id')->on('service_types');
             $table->unsignedBigInteger('provider_id')->nullable();
             $table->foreign('provider_id')->references('id')->on('providers');
             $table->unsignedBigInteger('orderstatus_id')->nullable();
