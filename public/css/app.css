@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -49,7 +50,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 248, 250, 252;
-  --bs-font-sans-serif: "Nunito", sans-serif;
+  --bs-font-sans-serif: "Montserrat", sans-serif;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -10251,4 +10252,129 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+@media (min-width: 1300px) {
+  .container {
+    width: 1270px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    width: 1370px;
+  }
+}
+@media (min-width: 1500px) {
+  .container {
+    width: 1470px;
+  }
+}
+@media (min-width: 1600px) {
+  .container {
+    width: 1570px;
+  }
+}
+@media (min-width: 1700px) {
+  .container {
+    width: 1670px;
+  }
+}
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: #25064c;
+}
+
+a:hover,
+a:active {
+  color: #4e713a;
+  text-decoration: underline;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  display: grid;
+  max-height: 110px;
+  height: 100%;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 0.75fr 1fr;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  padding-top: 10px;
+}
+header .logo {
+  grid-column: 1/2;
+  grid-row: 1/-1;
+}
+header .logo img {
+  height: 32px;
+  width: auto;
+}
+header .user--header {
+  grid-column: 2/3;
+  grid-row: 1;
+  text-align: end;
+  align-self: center;
+  padding: 10px;
+}
+header .user--header a {
+  font-size: 14px;
+}
+header .menu--bar {
+  grid-column: 2/3;
+  grid-row: 2;
+}
+header .menu--bar .menu--list {
+  display: flex;
+  gap: 10px;
+  padding-left: 0;
+  border-bottom: 2px solid #25064c;
+}
+header .menu--bar .menu--list li:first-child {
+  padding: 5px 0px;
+  padding-right: 10px;
+}
+header .menu--bar .menu--list li:first-child a {
+  font-size: 14px;
+}
+header .menu--bar .menu--list .dropdown--menu {
+  padding: 5px 10px;
+}
+header .menu--bar .menu--list .dropdown--menu .dropdown-toggle {
+  font-size: 16px;
+}
+header .menu--bar .menu--list .dropdown--menu .dropdown--ul {
+  font-size: 12px;
 }
