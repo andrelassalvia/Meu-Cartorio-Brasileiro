@@ -14,5 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(
+            [
+                // brazilStateSeeder::class,
+                // brazilCitySeeder::class,
+                // countrySeeder::class,
+                // ukCitiesSeeder::class,
+                // franceCitiesSeeder::class,
+                // franceCitiesSeeder::class,
+                // italyCitiesSeeder::class,
+                // spainCitiesSeeder::class,
+                // portugalCitiesSeeder::class,
+                // maritalStatusSeeder::class,
+                occupationsSeeder::class,
+            ]
+        );
     }
 }

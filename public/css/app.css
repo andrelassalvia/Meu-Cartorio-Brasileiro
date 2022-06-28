@@ -10262,6 +10262,7 @@ textarea.form-control-lg {
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
+  overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
@@ -10333,6 +10334,7 @@ header {
   -moz-column-gap: 30px;
        column-gap: 30px;
   padding-top: 10px;
+  margin-bottom: 20px;
 }
 header .logo {
   grid-column: 1/2;
@@ -10377,4 +10379,42 @@ header .menu--bar .menu--list .dropdown--menu .dropdown-toggle {
 }
 header .menu--bar .menu--list .dropdown--menu .dropdown--ul {
   font-size: 12px;
+}
+
+.sticky {
+  background-color: #f8fafc;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+main {
+  padding-top: 110px;
+}
+
+#newClient {
+  padding-bottom: 60px;
+}
+#newClient .card-header {
+  display: flex;
+  align-content: center;
+  gap: 8px;
+}
+#newClient .card-header h2, #newClient .card-header .h2 {
+  font-size: 14px;
+  margin-bottom: 0;
+  align-self: center;
+}
+#newClient .card-header .buttons {
+  margin-left: auto;
+}
+#newClient .card-body .col-form-label {
+  font-weight: 700;
+}
+#newClient .card-body .form-check-input {
+  align-self: center;
+  width: 14px;
+  height: 14px;
 }

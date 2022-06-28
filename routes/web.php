@@ -20,3 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// CLIENT
+Route::resource('clients', 'App\Http\Controllers\Client\ClientController')->middleware(['auth']);
+
+// BRAZIL CITIES
+Route::prefix('brazilCities')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\BrazilCityController')
+    ->group(function(){
+        route::get('/{brazilState}', 'loadBrazilCities')->name('brazilCities.loadBrazilCities');
+    });
+
+// CITIES
+Route::prefix('cities')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\CityController')
+    ->group(function(){
+        route::get('/{country}', 'loadCities')->name('cities.loadCities');
+    });

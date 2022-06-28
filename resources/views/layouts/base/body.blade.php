@@ -1,7 +1,7 @@
 
 <div id="app">
   <div class="container">
-    <header>
+    <header class="sticky">
       <div class="logo">
         <img src="{{ asset('img/logo-mcb-header.png') }}" alt="">
       </div>
@@ -33,7 +33,7 @@
           <div class="dropdown dropdown--menu">
             <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">Clientes</a>
             <ul class="dropdown-menu dropdown--ul">
-              <x-dropdown.item title="Novo" route=""/>
+              <x-dropdown.item title="Novo" route="clients.create"/>
               <x-dropdown.item title="Potenciais" route=""/>
               <x-dropdown.item title="Ordens em andamento" route=""/>
               <x-dropdown.item title="Inativos" route=""/>
@@ -76,7 +76,7 @@
         </ul>
       </div>
     </header>
-    <main>
+    <main class="container">
       @yield('content')
     </main>
   </div>
