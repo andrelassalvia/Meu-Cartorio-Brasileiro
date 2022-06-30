@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        \App\Models\Client::factory(1000)->create();
         $this->call(
             [
                 // brazilStateSeeder::class,
@@ -26,7 +27,9 @@ class DatabaseSeeder extends Seeder
                 // spainCitiesSeeder::class,
                 // portugalCitiesSeeder::class,
                 // maritalStatusSeeder::class,
-                occupationsSeeder::class,
+                // occupationsSeeder::class,
+                // serviceTypesSeeder::class,
+                // clientsStatusSeeder::class,
             ]
         );
     }

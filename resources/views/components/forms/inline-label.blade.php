@@ -1,7 +1,7 @@
 <div class="mb-3 row">
     <label 
         :for="$colName" 
-        class="col-sm-2 col-form-label"
+        class="col-sm-{{$labelSize}} col-form-label"
     > 
         {{ $title }} 
         <span style="color: red">{{ $req }}</span> 
@@ -17,6 +17,7 @@
 {{-- 
     colName
     title
+    labelSize
     colSize
     type
     req

@@ -4,25 +4,19 @@ namespace App\View\Components\forms;
 
 use Illuminate\View\Component;
 
-class select extends Component
+class checkGrid extends Component
 {
     public $title;
     public $colName;
-    public $id;
-    public $labelSize;
-    public $colSize;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $colName, $id, $labelSize, $colSize)
+    public function __construct($title, $colName)
     {
         $this->title = $title;
         $this->colName = $colName;
-        $this->id = $id;
-        $this->labelSize = $labelSize;
-        $this->colSize = $colSize;
     }
 
     /**
@@ -32,6 +26,6 @@ class select extends Component
      */
     public function render()
     {
-        return view('components.forms.select');
+        return view('components.forms.check-grid');
     }
 }

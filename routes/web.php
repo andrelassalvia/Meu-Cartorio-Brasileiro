@@ -21,7 +21,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// CLIENT
+// CLIENTS
+Route::prefix('clients-list/')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\Client\ClientListController')
+    ->group(function(){
+        route::get('list/{clientstatus}', 'list' )->name('clients.list');
+    });
 Route::resource('clients', 'App\Http\Controllers\Client\ClientController')->middleware(['auth']);
 
 // BRAZIL CITIES

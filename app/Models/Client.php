@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Client extends Model
 {
@@ -88,5 +89,12 @@ class Client extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'client_id', 'id');
+    }
+
+    // ====== METHODS ===== //
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-y');
     }
 }

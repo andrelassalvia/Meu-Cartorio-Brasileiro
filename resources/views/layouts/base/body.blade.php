@@ -1,7 +1,7 @@
 
 <div id="app">
   <div class="container">
-    <header class="sticky">
+    <header class="sticky container">
       <div class="logo">
         <img src="{{ asset('img/logo-mcb-header.png') }}" alt="">
       </div>
@@ -37,7 +37,7 @@
               <x-dropdown.item title="Potenciais" route=""/>
               <x-dropdown.item title="Ordens em andamento" route=""/>
               <x-dropdown.item title="Inativos" route=""/>
-              <x-dropdown.item title="Todos os clientes" route=""/>
+              <x-dropdown.item title="Todos os clientes" route="clients.index"/>
             </ul>
           </div>
           <div class="dropdown dropdown--menu">

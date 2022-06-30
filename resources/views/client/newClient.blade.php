@@ -18,6 +18,7 @@
         colName="name"
         title="Nome"
         colSize="6"
+        labelSize="2"
         type="text"
         req="*"
       />
@@ -33,6 +34,7 @@
         colName="email"
         title="E-mail"
         colSize="4"
+        labelSize="2"
         type="email"
         req=""
       />
@@ -41,6 +43,7 @@
         colName="birth_date"
         title="Data de nascimento"
         colSize="2"
+        labelSize="2"
         type="date"
         req=""
       />
@@ -73,6 +76,8 @@
       <x-forms.select-foreach
         title="Estado"
         colName='brazilstate_id'
+        colSize="2"
+        labelSize="2"
         :array="$brazilStates"
         :id="'brazil-state'"
       />
@@ -80,12 +85,16 @@
       <x-forms.select
         title="Cidade"
         colName="brazilcity_id"
+        colSize="2"
+        labelSize="2"
         :id="'brazil-city'"
       />
 
       <x-forms.select-foreach
         title="Pais"
         colName='country_id'
+        colSize="2"
+        labelSize="2"
         :array="$countries"
         :id="'country'"
       />
@@ -93,12 +102,16 @@
       <x-forms.select
         title="Cidade"
         colName="city_id"
+        colSize="2"
+        labelSize="2"
         :id="'city'"
       />
 
       <x-forms.select-foreach
         title="Estado civil"
         colName="maritalstatus_id"
+        colSize="2"
+        labelSize="2"
         :id="'marital-status'"
         :array="$maritalStatus"
       />
@@ -106,6 +119,8 @@
       <x-forms.select-foreach
         title="Ocupação"
         colName="occupation_id"
+        colSize="2"
+        labelSize="2"
         :id="'occupation'"
         :array="$occupations"
       />

@@ -10387,34 +10387,81 @@ header .menu--bar .menu--list .dropdown--menu .dropdown--ul {
   top: 0;
   bottom: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1;
 }
 
 main {
   padding-top: 110px;
 }
 
-#newClient {
+#newClient,
+#listClients {
   padding-bottom: 60px;
 }
-#newClient .card-header {
+#newClient .card-header,
+#listClients .card-header {
   display: flex;
   align-content: center;
   gap: 8px;
 }
-#newClient .card-header h2, #newClient .card-header .h2 {
+#newClient .card-header h2, #newClient .card-header .h2,
+#listClients .card-header h2,
+#listClients .card-header .h2 {
   font-size: 14px;
   margin-bottom: 0;
   align-self: center;
 }
-#newClient .card-header .buttons {
+#newClient .card-header .buttons,
+#listClients .card-header .buttons {
   margin-left: auto;
 }
-#newClient .card-body .col-form-label {
+#newClient .card-body .col-form-label,
+#listClients .card-body .col-form-label {
   font-weight: 700;
 }
-#newClient .card-body .form-check-input {
+#newClient .card-body .form-check-input,
+#listClients .card-body .form-check-input {
   align-self: center;
   width: 14px;
   height: 14px;
+}
+
+#listClients form {
+  margin-bottom: 20px;
+}
+#listClients .card-header .btn--create {
+  color: #fff;
+}
+#listClients .search--check {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+#listClients .search--check .search--check--item {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+  justify-self: right;
+  padding-right: 3px;
+}
+#listClients .search--check .search--check--item input {
+  justify-self: center;
+}
+#listClients .search--buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+#listClients .search--buttons .btn--clear {
+  color: #0d6efd;
+}
+#listClients .search--buttons .btn--clear:hover {
+  color: #fff;
+}
+#listClients .icon--null {
+  color: red;
+}
+#listClients .icon--check {
+  color: green;
 }

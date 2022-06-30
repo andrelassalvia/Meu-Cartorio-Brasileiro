@@ -11,19 +11,21 @@ class inlineLabel extends Component
     public $colSize;
     public $type;
     public $req;
+    public $labelSize;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($colName, $title, $colSize, $type, $req)
+    public function __construct($colName, $title, $colSize, $type, $req, $labelSize)
     {
         $this->colName = $colName;
         $this->title = $title;
         $this->colSize = $colSize;
         $this->type = $type;
         $this->req = $req;
+        $this->labelSize = $labelSize;
     }
 
     /**
