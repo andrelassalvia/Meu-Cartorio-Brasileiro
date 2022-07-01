@@ -28,14 +28,16 @@ Route::prefix('clients-list/')
     ->group(function(){
         route::get('list/{clientstatus}', 'list' )->name('clients.list');
     });
-Route::resource('clients', 'App\Http\Controllers\Client\ClientController')->middleware(['auth']);
+Route::resource('clients', 'App\Http\Controllers\Client\ClientController')
+    ->middleware(['auth']);
 
 // BRAZIL CITIES
 Route::prefix('brazilCities')
     ->middleware(['auth'])
     ->controller('App\Http\Controllers\BrazilCityController')
     ->group(function(){
-        route::get('/{brazilState}', 'loadBrazilCities')->name('brazilCities.loadBrazilCities');
+        route::get('/{brazilState}', 'loadBrazilCities')
+            ->name('brazilCities.loadBrazilCities');
     });
 
 // CITIES
@@ -47,4 +49,9 @@ Route::prefix('cities')
     });
 
 // SERVICE ORDERS
-Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')->middleware(['auth']);
+Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
+    ->middleware(['auth']);
+
+// PROVIDERS
+Route::resource('providers', 'App\Http\Controllers\ProviderController')
+    ->middleware(['auth']);
