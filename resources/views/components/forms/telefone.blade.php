@@ -4,7 +4,7 @@
     >
         Telefone <span style="color: red">{{ $req }}</span>
     </label>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
       <select class="form-select form-select-sm" name="countryCode">
         <option value="">Selecione</option>
         @foreach ($countries as $country)

@@ -4,37 +4,34 @@ namespace App\View\Components\forms;
 
 use Illuminate\View\Component;
 
-class selectForeach extends Component
+class inlineLabelButton extends Component
 {
-    public $title;
     public $colName;
-    public $array;
-    public $id;
-    public $colSize;
     public $labelSize;
+    public $title;
     public $req;
+    public $colSize;
+    public $route;
     /**
      * Create a new component instance.
      *
      * @return void
      */
     public function __construct(
-        $title, 
-        $colName, 
-        $array, 
-        $id, 
-        $colSize, 
+        $colName,
         $labelSize,
-        $req
+        $title,
+        $req,
+        $colSize,
+        $route
     )
     {
-        $this->title = $title;
         $this->colName = $colName;
-        $this->array = $array;
-        $this->id = $id;
-        $this->colSize = $colSize;
         $this->labelSize = $labelSize;
+        $this->title = $title;
         $this->req = $req;
+        $this->colSize = $colSize;
+        $this->route = $route;
     }
 
     /**
@@ -44,6 +41,6 @@ class selectForeach extends Component
      */
     public function render()
     {
-        return view('components.forms.select-foreach');
+        return view('components.forms.inline-label-button');
     }
 }

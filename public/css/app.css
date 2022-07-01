@@ -10465,3 +10465,35 @@ main {
 #listClients .icon--check {
   color: green;
 }
+
+#newOrder {
+  padding-bottom: 60px;
+}
+#newOrder .card-header {
+  display: flex;
+  align-content: center;
+  gap: 8px;
+}
+#newOrder .card-header h2, #newOrder .card-header .h2 {
+  font-size: 14px;
+  margin-bottom: 0;
+  align-self: center;
+}
+#newOrder .card-header .buttons {
+  margin-left: auto;
+}
+#newOrder .card-body .col-form-label {
+  font-weight: 700;
+}
+#newOrder .card-body .client--button {
+  gap: 18px;
+}
+#newOrder .card-body .client--button a:hover {
+  text-decoration: none;
+}
+#newOrder .card-body .client--button .search--button {
+  color: #343a40;
+}
+#newOrder .card-body .client--button .search--button:hover {
+  color: #fff;
+}

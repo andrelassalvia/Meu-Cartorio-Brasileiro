@@ -45,3 +45,6 @@ Route::prefix('cities')
     ->group(function(){
         route::get('/{country}', 'loadCities')->name('cities.loadCities');
     });
+
+// SERVICE ORDERS
+Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')->middleware(['auth']);

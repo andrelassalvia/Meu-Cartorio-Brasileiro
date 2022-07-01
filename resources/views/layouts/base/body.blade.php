@@ -49,7 +49,7 @@
               Ordens de serviço
             </a>
             <ul class="dropdown-menu dropdown--ul">
-              <x-dropdown.item title="Nova" route=""/>
+              <x-dropdown.item title="Nova" route="service-orders.create"/>
               <x-dropdown.item title="Em andamento" route=""/>
               <x-dropdown.item title="Encerradas" route=""/>
             </ul>

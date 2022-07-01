@@ -40,6 +40,7 @@
               labelSize="3"
               :array="$brazilStates"
               :id="'brazil-state'"
+              req=""
             />
   
             {{-- Search for city in Brazil --}}
@@ -61,6 +62,7 @@
             labelSize="3"
             :array="$serviceTypes"
             :id="'service-type'"
+            req=""
           />
 
           {{-- Search for documents --}}
@@ -80,6 +82,7 @@
             labelSize="3"
             :array="$countries"
             :id="'country'"
+            req=""
           />
 
           {{-- Search form city --}}
