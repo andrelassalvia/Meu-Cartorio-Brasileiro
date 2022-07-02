@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         // \App\Models\Client::factory(1000)->create();
+        // \App\Models\Provider::factory(1000)->create();
         $this->call(
             [
                 // brazilStateSeeder::class,
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
                 // serviceTypesSeeder::class,
                 // clientsStatusSeeder::class,
                 // orderStatusSeeder::class,
+                // classificationSeeder::class,
             ]
         );
     }

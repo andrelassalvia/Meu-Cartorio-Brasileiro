@@ -1,4 +1,5 @@
-#newProvider {
+#newProvider,
+#listProviders {
     .card-header {
         display: flex;
         align-content: center;
@@ -23,6 +24,32 @@
             align-self: center;
             width: 14px;
             height: 14px;
+        }
+    }
+}
+
+#listProviders {
+    form {
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        .btn--create {
+            color: #fff;
+        }
+    }
+
+    .search--buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .btn--clear {
+            color: $primary;
+        }
+
+        .btn--clear:hover {
+            color: #fff;
         }
     }
 }

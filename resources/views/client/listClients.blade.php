@@ -8,8 +8,8 @@
     <a href="{{ route('clients.create') }}" class="btn btn-sm btn-success btn--create">Novo</a>
   </div>
   <div class="card-body">
-    <form action="" method="post">
-      <div class="search--body d-flex">
+    <form action="" method="get">
+      <div class="d-flex">
         
         <div class="col-sm-6 mt-3">
           {{-- search for name --}}
@@ -98,16 +98,7 @@
       </div>
 
       {{-- BUTTONS --}}
-      <div class="search--buttons">
-        <button class="btn btn-sm btn-outline-secondary btn--clear" type="reset">
-          <i class='bx bx-eraser'></i>
-          <span>Limpar</span>
-        </button>
-        <button class="btn btn-sm btn-primary" type="submit">
-          <i class='bx bx-search-alt-2'></i>
-          <span>Pesquisar</span>
-        </button>
-      </div>
+      <x-forms.search-buttons/>
     </form>
 
     {{-- TABLE LIST WITH CLIENTS --}}
@@ -196,16 +187,11 @@
         @endforeach
       </tbody>
     </table>
-    <div class="d-flex justify-content-between">
-      <div>{{ $clients->links() }}</div>
-      <div>
-        <p class="fw-bold">
-          {{ $clients->firstItem() }} - 
-          <span>{{ $clients->lastItem() }}</span> 
-          <span>de {{ $clients->total() }}</span>
-        </p>
-      </div>
-    </div>
+
+    {{-- PAGINATION --}}
+    <x-tables.pagination
+      :array="$clients"
+    />
   <div>
 </div>
 

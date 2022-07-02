@@ -64,7 +64,7 @@
             </a>
             <ul class="dropdown-menu dropdown--ul">
               <x-dropdown.item title="Novo" route="providers.create"/>
-              <x-dropdown.item title="Lista de fornecedores" route=""/>
+              <x-dropdown.item title="Lista de fornecedores" route="providers.index"/>
             </ul>
           </div>
           <div class="dropdown dropdown--menu">
