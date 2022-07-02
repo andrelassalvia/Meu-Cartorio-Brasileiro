@@ -2,7 +2,7 @@
     @if($route != "")
     <a 
         class="dropdown-item" 
-        href="{{route($route)}}"
+        href="{{ route($route) }}"
     >
     {{-- iten title --}}
         {{$title}}
@@ -16,5 +16,4 @@
         {{$title}}
     </a>
     @endif
-
 </li>

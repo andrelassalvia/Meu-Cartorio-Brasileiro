@@ -10441,7 +10441,7 @@ main {
 
 #newClient,
 #listClients {
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 }
 #newClient .card-header,
 #listClients .card-header {
@@ -10543,6 +10543,10 @@ main {
   color: #fff;
 }
 
+#newProvider,
+#listProviders {
+  padding-bottom: 40px;
+}
 #newProvider .card-header,
 #listProviders .card-header {
   display: flex;

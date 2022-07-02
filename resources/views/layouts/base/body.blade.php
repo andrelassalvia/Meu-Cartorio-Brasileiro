@@ -34,9 +34,10 @@
             <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">Clientes</a>
             <ul class="dropdown-menu dropdown--ul">
               <x-dropdown.item title="Novo" route="clients.create"/>
-              <x-dropdown.item title="Potenciais" route=""/>
-              <x-dropdown.item title="Ordens em andamento" route=""/>
-              <x-dropdown.item title="Inativos" route=""/>
+              <a class="dropdown-item" href="{{ route('clients.list', 1) }}">Potenciais</a>
+              <a class="dropdown-item" href="{{ route('clients.list', 3) }}">Ordens em andamento</a>
+              <a class="dropdown-item" href="{{ route('clients.list', 4) }}">Ordens encerradas</a>
+              <a class="dropdown-item" href="{{ route('clients.list', 2) }}">Inativos</a>
               <x-dropdown.item title="Todos os clientes" route="clients.index"/>
             </ul>
           </div>
