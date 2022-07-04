@@ -16,12 +16,13 @@ class ProviderController extends Controller
      */
     public function index()
     {
+        $title = 'Lista de fornecedores';
         $brazilStates = BrazilState::orderBy('name')->get();
         $classifications = Classification::all();
         $providers = Provider::orderBy('updated_at')->paginate(15);
         return view(
             'provider.listProviders', 
-            compact('brazilStates', 'classifications', 'providers')
+            compact('brazilStates', 'classifications', 'providers', 'title')
         );
     }
 

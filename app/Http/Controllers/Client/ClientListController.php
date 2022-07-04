@@ -11,7 +11,28 @@ use App\Models\Country;
 
 class ClientListController extends Controller
 {
+    /**
+     * Method to list clients filtered by status
+     */
     public function list($clientStatus){
+
+        switch ($clientStatus) {
+            case 1:
+                $title = 'Clientes potenciais';
+                break;
+
+            case 2:
+                $title = 'Clientes inativos';
+                break;
+
+            case 3:
+                $title = 'Clientes com ordens';
+                break;
+
+            default:
+                $title = 'Clientes com ordens encerradas';
+                break;
+        }
 
         $serviceTypes = ServiceType::orderBy('name')->get();
         $brazilStates = BrazilState::orderBy('name')->get();
@@ -22,7 +43,7 @@ class ClientListController extends Controller
 
         return view(
             'client.listClients', 
-            compact('serviceTypes', 'brazilStates', 'countries', 'clients')
+            compact('serviceTypes', 'brazilStates', 'countries', 'clients', 'title')
         );
     }
 }

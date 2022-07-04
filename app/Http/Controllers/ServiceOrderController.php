@@ -26,11 +26,12 @@ class ServiceOrderController extends Controller
      */
     public function create()
     {
+        $title = "Nova ordem";
         $today = Carbon::today()->toDateString();
         $today = Carbon::parse($today)->format('d / m / Y');
         $serviceTypes = ServiceType::orderBy('name')->get();
 
-        return view('order.newOrder', compact('today', 'serviceTypes'));
+        return view('order.newOrder', compact('today', 'serviceTypes', 'title'));
     }
 
     /**

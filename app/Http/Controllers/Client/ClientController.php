@@ -20,6 +20,7 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $title = 'Todos os clientes';
         $serviceTypes = ServiceType::orderBy('name')->get();
         $brazilStates = BrazilState::orderBy('name')->get();
         $countries = Country::orderBy('name')->get();
@@ -27,7 +28,7 @@ class ClientController extends Controller
 
         return view(
             'client.listClients', 
-            compact('serviceTypes', 'brazilStates', 'countries', 'clients')
+            compact('serviceTypes', 'brazilStates', 'countries', 'clients', 'title')
         );
     }
 
@@ -38,6 +39,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        $title = 'Novo cliente';
         $brazilStates = BrazilState::orderBy('name')->get();
         $countries = Country::orderBy('name')->get();
         $maritalStatus = MaritalStatus::orderBy('name')->get();
@@ -45,7 +47,7 @@ class ClientController extends Controller
 
         return view(
             'client.newClient', 
-            compact('brazilStates', 'countries', 'maritalStatus', 'occupations')
+            compact('brazilStates', 'countries', 'maritalStatus', 'occupations', 'title')
         );
     }
 
