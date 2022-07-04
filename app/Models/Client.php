@@ -78,12 +78,12 @@ class Client extends Model
 
     public function occupation()
     {
-        return $this->hasOne(Occupation::class, 'occupation_id', 'id');
+        return $this->belongsTo(Occupation::class, 'occupation_id', 'id');
     }
 
     public function maritalStatus()
     {
-        return $this->hasOne(MaritalStatus::class, 'maritalstatus_id', 'id');
+        return $this->belongsTo(MaritalStatus::class, 'maritalstatus_id', 'id');
     }
 
     public function comments()
@@ -94,6 +94,11 @@ class Client extends Model
     // ====== METHODS ===== //
 
     public function getUpdatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-y');
+    }
+
+    public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-y');
     }

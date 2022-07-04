@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // \App\Models\Client::factory(1000)->create();
         // \App\Models\Provider::factory(1000)->create();
+        // \App\Models\ServiceOrder::factory(10000)->create();
+        \App\Models\Comment::factory(10000)->create();
         $this->call(
             [
                 // brazilStateSeeder::class,

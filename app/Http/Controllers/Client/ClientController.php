@@ -10,6 +10,8 @@ use App\Models\Country;
 use App\Models\MaritalStatus;
 use App\Models\Occupation;
 use App\Models\ServiceType;
+use App\Models\ServiceOrder;
+use App\Models\Comment;
 
 class ClientController extends Controller
 {
@@ -70,7 +72,11 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        $orders = ServiceOrder::where('client_id', $id)->orderBy('updated_at', 'desc')->get();
+        $comments = Comment::where('client_id', $id)->orderBy('updated_at', 'desc')->get();
+
+        return view('client.showClient', compact('client', 'orders', 'comments'));
     }
 
     /**
@@ -81,7 +87,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('client.editClient');
     }
 
     /**

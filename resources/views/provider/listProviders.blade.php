@@ -91,13 +91,13 @@
     <tbody>
       @foreach ($providers as $provider)
         <tr>
-          <td>{{ $provider->name }}</td>
-          <td>{{ $provider->contact }}</td>
+          <td>{{ $provider->name ?? ''}}</td>
+          <td>{{ $provider->contact ?? '' }}</td>
           <td>{{ $provider->tel }}</td>
-          <td>{{ $provider->zap }}</td>
-          <td>{{ $provider->email }}</td>
-          <td>{{ $provider->brazilState->name }}</td>
-          <td>{{ $provider->brazilCity->name }}</td>
+          <td>{{ $provider->zap ?? ''}}</td>
+          <td>{{ $provider->email ?? ''}}</td>
+          <td>{{ $provider->brazilState->name ?? ''}}</td>
+          <td>{{ $provider->brazilCity->name ?? ''}}</td>
           <td></td>
           <td><i class='bx bx-search-alt-2 bx-xs'></i></td>
         </tr>

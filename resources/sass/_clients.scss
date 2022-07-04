@@ -1,5 +1,6 @@
 #newClient,
-#listClients {
+#listClients,
+#showClient {
     padding-bottom: 40px;
     .card-header {
         display: flex;
@@ -77,5 +78,69 @@
 
     .icon--check {
         color: green;
+    }
+}
+
+#showClient {
+    a {
+        text-decoration: none;
+    }
+    .btn-warning {
+        color: $violet;
+    }
+    .btn-primary {
+        color: #fff;
+    }
+
+    .show--client {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem 1.3rem;
+
+        .client--data {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            .general--data {
+                grid-column: 1 / 2;
+            }
+
+            .place--data {
+                grid-column: 2 / 3;
+            }
+
+            .documentations--data {
+                grid-column: 3 / 4;
+
+                .icon--null {
+                    color: red;
+                }
+
+                .icon--check {
+                    color: green;
+                }
+            }
+
+            p {
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            span {
+                font-size: 0.9rem;
+                font-weight: 400;
+            }
+        }
+
+        .client--orders {
+            grid-column: 1 / 2;
+            padding: 1rem;
+        }
+
+        .client--comments {
+            grid-column: 2 / 3;
+            padding: 1rem;
+        }
     }
 }

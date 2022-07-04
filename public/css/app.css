@@ -10440,32 +10440,39 @@ main {
 }
 
 #newClient,
-#listClients {
+#listClients,
+#showClient {
   padding-bottom: 40px;
 }
 #newClient .card-header,
-#listClients .card-header {
+#listClients .card-header,
+#showClient .card-header {
   display: flex;
   align-content: center;
   gap: 8px;
 }
 #newClient .card-header h2, #newClient .card-header .h2,
 #listClients .card-header h2,
-#listClients .card-header .h2 {
+#listClients .card-header .h2,
+#showClient .card-header h2,
+#showClient .card-header .h2 {
   font-size: 14px;
   margin-bottom: 0;
   align-self: center;
 }
 #newClient .card-header .buttons,
-#listClients .card-header .buttons {
+#listClients .card-header .buttons,
+#showClient .card-header .buttons {
   margin-left: auto;
 }
 #newClient .card-body .col-form-label,
-#listClients .card-body .col-form-label {
+#listClients .card-body .col-form-label,
+#showClient .card-body .col-form-label {
   font-weight: 700;
 }
 #newClient .card-body .form-check-input,
-#listClients .card-body .form-check-input {
+#listClients .card-body .form-check-input,
+#showClient .card-body .form-check-input {
   align-self: center;
   width: 14px;
   height: 14px;
@@ -10509,6 +10516,57 @@ main {
 }
 #listClients .icon--check {
   color: green;
+}
+
+#showClient a {
+  text-decoration: none;
+}
+#showClient .btn-warning {
+  color: #25064c;
+}
+#showClient .btn-primary {
+  color: #fff;
+}
+#showClient .show--client {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 1.3rem;
+}
+#showClient .show--client .client--data {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+#showClient .show--client .client--data .general--data {
+  grid-column: 1/2;
+}
+#showClient .show--client .client--data .place--data {
+  grid-column: 2/3;
+}
+#showClient .show--client .client--data .documentations--data {
+  grid-column: 3/4;
+}
+#showClient .show--client .client--data .documentations--data .icon--null {
+  color: red;
+}
+#showClient .show--client .client--data .documentations--data .icon--check {
+  color: green;
+}
+#showClient .show--client .client--data p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+#showClient .show--client .client--data span {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+#showClient .show--client .client--orders {
+  grid-column: 1/2;
+  padding: 1rem;
+}
+#showClient .show--client .client--comments {
+  grid-column: 2/3;
+  padding: 1rem;
 }
 
 #newOrder {

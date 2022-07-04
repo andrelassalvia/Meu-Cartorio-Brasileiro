@@ -137,62 +137,66 @@
         <td>{{ $client->tel }}</td>
 
         {{-- EMAIL --}}
-        @if ($client->email == null)
+        @if (empty($client->email))
           <td><i class='bx bxs-no-entry'></i></td>
         @else
           <td>{{ $client->email }}</td>
         @endif
 
         {{-- BRAZIL CITY --}}
-        @if ($client->brazilcity_id == null)
+        @if (empty($client->brazilcity_id))
           <td><i class='bx bxs-no-entry'></i></td>
         @else
           <td>{{ $client->brazilCity->name }} - {{ $client->brazilState->code }}</td>
         @endif
           
         {{-- FIRMA ABERTA --}}
-        @if ($client->firma_aberta == null)
+        @if (empty($client->firma_aberta))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
           
         {{-- CNH --}}
-        @if ($client->cnh == null)
+        @if (empty($client->cnh))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
 
         {{-- DIGITAL CERTIFICATION --}}
-        @if ($client->digital_certification == null)
+        @if (empty($client->digital_certification))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
 
         {{-- CPF --}}
-        @if ($client->cpf == null)
+        @if (empty($client->cpf))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
 
         {{-- RG --}}
-        @if ($client->rg == null)
+        @if (empty($client->rg))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
 
         {{-- PASSPORT --}}
-        @if ($client->passport == null)
+        @if (empty($client->passport))
           <td><i class='bx bxs-no-entry icon--null'></i></td>
         @else
           <td><i class='bx bxs-check-circle icon--check'></i></td>
         @endif
         
-        <td><i class='bx bx-search-alt-2 bx-xs'></i></td>
+        <td>
+          <a href="{{ route('clients.show', $client) }}">
+            <i class='bx bx-search-alt-2 bx-xs'></i>
+          </a>
+        </td>
       </tr>
       @endforeach
     </tbody>
