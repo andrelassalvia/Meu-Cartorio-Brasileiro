@@ -8,16 +8,18 @@ class item extends Component
 {
     public $route;
     public $title;
+    public $tooltip;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($route, $title)
+    public function __construct($route, $title, $tooltip)
     {
         $this->route = $route;
         $this->title = $title;
+        $this->tooltip = $tooltip;
     }
 
     /**

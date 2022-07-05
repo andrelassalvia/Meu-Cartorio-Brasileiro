@@ -12,6 +12,7 @@ class inlineLabelButton extends Component
     public $req;
     public $colSize;
     public $route;
+    public $tooltip;
     /**
      * Create a new component instance.
      *
@@ -23,7 +24,8 @@ class inlineLabelButton extends Component
         $title,
         $req,
         $colSize,
-        $route
+        $route,
+        $tooltip
     )
     {
         $this->colName = $colName;
@@ -32,6 +34,7 @@ class inlineLabelButton extends Component
         $this->req = $req;
         $this->colSize = $colSize;
         $this->route = $route;
+        $this->tooltip = $tooltip;
     }
 
     /**

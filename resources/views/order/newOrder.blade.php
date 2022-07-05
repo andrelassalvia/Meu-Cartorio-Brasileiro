@@ -39,6 +39,7 @@
     req="*"
     colSize="4"
     route="#"
+    tooltip="Seleciona clientes em uma lista"
     />
 
     <input type="hidden" name="client_id" value="">
@@ -62,6 +63,7 @@
     req="*"
     colSize="4"
     route="#"
+    tooltip="Seleciona cartório"
     />
 
     <input type="hidden" name="provider_id" value="">
@@ -78,7 +80,8 @@
     <x-forms.comment/>
   </form>
 
-
 </x-cards.card-main>
+
+<script src="{{ asset('js/tooltip.js') }}"></script>
 
 @endsection

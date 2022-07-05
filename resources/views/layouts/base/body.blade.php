@@ -33,12 +33,48 @@
           <div class="dropdown dropdown--menu">
             <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">Clientes</a>
             <ul class="dropdown-menu dropdown--ul">
-              <x-dropdown.item title="Novo" route="clients.create"/>
-              <a class="dropdown-item" href="{{ route('clients.list', 1) }}">Potenciais</a>
-              <a class="dropdown-item" href="{{ route('clients.list', 3) }}">Ordens em andamento</a>
-              <a class="dropdown-item" href="{{ route('clients.list', 4) }}">Ordens encerradas</a>
-              <a class="dropdown-item" href="{{ route('clients.list', 2) }}">Inativos</a>
-              <x-dropdown.item title="Todos os clientes" route="clients.index"/>
+              <x-dropdown.item 
+                title="Novo" 
+                route="clients.create"
+                tooltip="Novo cliente"
+              />
+              <a 
+                class="dropdown-item" 
+                href="{{ route('clients.list', 1) }}"
+                data-bs-toggle="tooltip"
+                title="Lista os clientes que entraram em contato mas não iniciaram uma ordem de serviço"
+              >
+                Potenciais
+              </a>
+              <a 
+                class="dropdown-item" 
+                href="{{ route('clients.list', 3) }}"
+                data-bs-toggle="tooltip"
+                title="Lista de clientes com ordens de serviço em andamento"
+              >
+                Ordens em andamento
+              </a>
+              <a 
+                class="dropdown-item" 
+                href="{{ route('clients.list', 4) }}"
+                data-bs-toggle="tooltip"
+                title="LIsta clientes com ordens de serviço encerradas"
+              >
+                Ordens encerradas
+              </a>
+              <a 
+                class="dropdown-item" 
+                href="{{ route('clients.list', 2) }}"
+                data-bs-toggle="tooltip"
+                title="Lista contatos que não se tornaram clientes"
+              >
+                Inativos
+              </a>
+              <x-dropdown.item 
+                title="Todos os clientes" 
+                route="clients.index"
+                tooltip="Listagem de todos os clientes já cadastrados"
+              />
             </ul>
           </div>
           <div class="dropdown dropdown--menu">
@@ -50,9 +86,21 @@
               Ordens de serviço
             </a>
             <ul class="dropdown-menu dropdown--ul">
-              <x-dropdown.item title="Nova" route="service-orders.create"/>
-              <x-dropdown.item title="Em andamento" route=""/>
-              <x-dropdown.item title="Encerradas" route=""/>
+              <x-dropdown.item 
+                title="Nova" 
+                route="service-orders.create"
+                tooltip="Nova ordem de serviço"
+              />
+              <x-dropdown.item 
+                title="Em andamento" 
+                route=""
+                tooltip="Lista todas as ordens de serviço em andamento"
+              />
+              <x-dropdown.item 
+                title="Encerradas" 
+                route=""
+                tooltip="Lista todas as ordens de serviço já encerradas"
+              />
             </ul>
           </div>
           <div class="dropdown dropdown--menu">
@@ -64,8 +112,16 @@
               Fornecedores
             </a>
             <ul class="dropdown-menu dropdown--ul">
-              <x-dropdown.item title="Novo" route="providers.create"/>
-              <x-dropdown.item title="Lista de fornecedores" route="providers.index"/>
+              <x-dropdown.item 
+                title="Novo" 
+                route="providers.create"
+                tooltip="Cria um novo fornecedor"
+                />
+              <x-dropdown.item 
+                title="Lista de fornecedores" 
+                route="providers.index"
+                tooltip="Lista todos os fornecedores"  
+              />
             </ul>
           </div>
           <div class="dropdown dropdown--menu">
@@ -87,3 +143,6 @@
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
   crossorigin="anonymous">
 </script>
+
+{{-- script to run tooltips --}}
+<script src="{{asset('js/tooltip.js')}}"></script>

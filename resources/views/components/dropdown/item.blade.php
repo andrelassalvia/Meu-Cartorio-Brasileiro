@@ -3,6 +3,8 @@
     <a 
         class="dropdown-item" 
         href="{{ route($route) }}"
+        data-bs-toggle="tooltip"
+        title="{{  $tooltip }}"
     >
     {{-- iten title --}}
         {{$title}}

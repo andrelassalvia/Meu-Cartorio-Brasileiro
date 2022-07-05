@@ -6,7 +6,12 @@
     </label>
     <div class="col-sm-{{ $colSize }} d-flex client--button">
       <input type="text" name="{{ $colName }}" class="form-control form-control-sm" value="" disabled>
-      <a class="btn btn-sm btn-outline-secondary d-flex align-items-center" href="{{ $route }}">
+      <a 
+        class="btn btn-sm btn-outline-secondary d-flex align-items-center" 
+        href="{{ $route }}"
+        data-bs-toggle="tooltip"
+        title="{{ $tooltip }}"
+      >
         <i class="bx bx-search-alt-2 search--button pe-1"><span class="ps-1">Buscar</span></i>
       </a>
     </div>
