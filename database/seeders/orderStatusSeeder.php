@@ -21,6 +21,7 @@ class orderStatusSeeder extends Seeder
             ['name' => 'Confecção da minuta'],
             ['name' => 'Video conferência'],
             ['name' => 'Emissão da procuração'],
+            ['name' => 'Encerrada']
         ];
         
         foreach ($status as $key => $value) {

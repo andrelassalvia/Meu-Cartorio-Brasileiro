@@ -28,6 +28,7 @@ Route::prefix('clients-list/')
     ->group(function(){
         route::get('list/{clientstatus}', 'list' )->name('clients.list');
     });
+
 Route::resource('clients', 'App\Http\Controllers\Client\ClientController')
     ->middleware(['auth']);
 
@@ -49,6 +50,13 @@ Route::prefix('cities')
     });
 
 // SERVICE ORDERS
+Route::prefix('orders/')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\Order\OrderListController')
+    ->group(function(){
+        route::get('list/{status}', 'list')->name('orders.list');
+    });
+
 Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
     ->middleware(['auth']);
 

@@ -17,7 +17,7 @@ class ServiceOrderFactory extends Factory
             'client_id' => random_int(2001, 3000),
             'servicetype_id' => random_int(1, 7),
             'provider_id' => random_int(3, 1002),
-            'orderstatus_id' => random_int(1, 6),
+            'orderstatus_id' => random_int(1, 7),
             'classification_id' => random_int(1, 5)
         ];
     }

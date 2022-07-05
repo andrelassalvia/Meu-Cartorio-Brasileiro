@@ -91,16 +91,22 @@
                 route="service-orders.create"
                 tooltip="Nova ordem de serviço"
               />
-              <x-dropdown.item 
-                title="Em andamento" 
-                route=""
-                tooltip="Lista todas as ordens de serviço em andamento"
-              />
-              <x-dropdown.item 
-                title="Encerradas" 
-                route=""
-                tooltip="Lista todas as ordens de serviço já encerradas"
-              />
+              <a 
+                class="dropdown-item" 
+                href="{{ route('orders.list', 7) }}"
+                data-bs-toggle="tooltip"
+                title="LIsta clientes com ordens de serviço encerradas"
+              >
+                Encerradas
+              </a>
+              <a 
+                class="dropdown-item" 
+                href="{{ route('orders.list', 1) }}"
+                data-bs-toggle="tooltip"
+                title="LIsta clientes com ordens de serviço em andamento"
+              >
+                Em andamento
+              </a>
             </ul>
           </div>
           <div class="dropdown dropdown--menu">

@@ -10484,6 +10484,9 @@ main {
 #listClients .card-header .btn--create {
   color: #fff;
 }
+#listClients .card-header .btn--create:hover {
+  text-decoration: none;
+}
 #listClients .search--check {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -10569,35 +10572,50 @@ main {
   padding: 1rem;
 }
 
-#newOrder {
-  padding-bottom: 60px;
+#newOrder,
+#listOrders {
+  padding-bottom: 40px;
 }
-#newOrder .card-header {
+#newOrder .card-header,
+#listOrders .card-header {
   display: flex;
   align-content: center;
   gap: 8px;
 }
-#newOrder .card-header h2, #newOrder .card-header .h2 {
+#newOrder .card-header h2, #newOrder .card-header .h2,
+#listOrders .card-header h2,
+#listOrders .card-header .h2 {
   font-size: 14px;
   margin-bottom: 0;
   align-self: center;
 }
-#newOrder .card-header .buttons {
+#newOrder .card-header .buttons,
+#listOrders .card-header .buttons {
   margin-left: auto;
 }
-#newOrder .card-body .col-form-label {
+#newOrder .card-body .col-form-label,
+#listOrders .card-body .col-form-label {
   font-weight: 700;
 }
-#newOrder .card-body .client--button {
-  gap: 18px;
+
+#listOrders form {
+  margin-bottom: 20px;
 }
-#newOrder .card-body .client--button a:hover {
+#listOrders .card-header .btn--create {
+  color: #fff;
+}
+#listOrders .card-header .btn--create:hover {
   text-decoration: none;
 }
-#newOrder .card-body .client--button .search--button {
-  color: #343a40;
+#listOrders .search--buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
-#newOrder .card-body .client--button .search--button:hover {
+#listOrders .search--buttons .btn--clear {
+  color: #0d6efd;
+}
+#listOrders .search--buttons .btn--clear:hover {
   color: #fff;
 }
 
@@ -10638,6 +10656,9 @@ main {
 }
 #listProviders .card-header .btn--create {
   color: #fff;
+}
+#listProviders .card-header .btn--create:hover {
+  text-decoration: none;
 }
 #listProviders .search--buttons {
   display: flex;

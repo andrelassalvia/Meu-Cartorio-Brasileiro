@@ -1,5 +1,6 @@
-#newOrder {
-    padding-bottom: 60px;
+#newOrder,
+#listOrders {
+    padding-bottom: 40px;
     .card-header {
         display: flex;
         align-content: center;
@@ -19,21 +20,33 @@
         .col-form-label {
             font-weight: 700;
         }
+    }
+}
 
-        .client--button {
-            gap: 18px;
+#listOrders {
+    form {
+        margin-bottom: 20px;
+    }
+    .card-header {
+        .btn--create {
+            color: #fff;
+        }
+        .btn--create:hover {
+            text-decoration: none;
+        }
+    }
 
-            a:hover {
-                text-decoration: none;
-            }
+    .search--buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
 
-            .search--button {
-                color: $text-button-gray;
-            }
+        .btn--clear {
+            color: $primary;
+        }
 
-            .search--button:hover {
-                color: #fff;
-            }
+        .btn--clear:hover {
+            color: #fff;
         }
     }
 }

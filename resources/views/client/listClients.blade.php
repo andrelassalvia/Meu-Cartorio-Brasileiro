@@ -204,8 +204,8 @@
 
    {{-- PAGINATION --}}
    <x-tables.pagination
-    :array="$clients"
-  />
+      :array="$clients"
+    />
 </x-cards.card-main>
 
 {{-- Load cities to select --}}
