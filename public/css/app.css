@@ -10597,6 +10597,10 @@ main {
 #listOrders .card-body .col-form-label {
   font-weight: 700;
 }
+#newOrder .card-body .client--button,
+#listOrders .card-body .client--button {
+  gap: 10px;
+}
 
 #listOrders form {
   margin-bottom: 20px;

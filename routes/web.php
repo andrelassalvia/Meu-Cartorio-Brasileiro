@@ -57,7 +57,7 @@ Route::prefix('orders/')
         route::get('list/{status}', 'list')->name('orders.list');
     });
 
-Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
+Route::resource('service-orders', 'App\Http\Controllers\Order\ServiceOrderController')
     ->middleware(['auth']);
 
 // PROVIDERS
