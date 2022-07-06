@@ -145,7 +145,7 @@
               />
               <x-dropdown.item
                 title="Países"
-                route=""
+                route="countries.index"
                 tooltip="Gerenciar lista de países"
               />
               <x-dropdown.item

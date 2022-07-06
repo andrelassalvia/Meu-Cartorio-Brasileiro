@@ -49,6 +49,10 @@ Route::prefix('cities')
         route::get('/{country}', 'loadCities')->name('cities.loadCities');
     });
 
+// COUNTRIES
+Route::resource('countries', 'App\Http\Controllers\CountryController')
+    ->middleware(['auth']);
+
 // MARITAL STATUS
 Route::resource('marital-status', 'App\Http\Controllers\MaritalStatusController')
     ->middleware(['auth']);
