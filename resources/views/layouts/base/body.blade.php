@@ -140,7 +140,7 @@
               />
               <x-dropdown.item
                 title="Estado civil"
-                route=""
+                route="marital-status.index"
                 tooltip="Gerenciar estado civil"
               />
               <x-dropdown.item

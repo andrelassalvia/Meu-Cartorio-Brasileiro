@@ -10708,3 +10708,36 @@ main {
   font-size: 0.8rem;
   font-weight: 600;
 }
+
+#maritalManagement .card-header {
+  display: flex;
+  align-content: center;
+  gap: 8px;
+}
+#maritalManagement .card-header h2, #maritalManagement .card-header .h2 {
+  font-size: 14px;
+  margin-bottom: 0;
+  align-self: center;
+}
+#maritalManagement .card-header .buttons {
+  margin-left: auto;
+}
+#maritalManagement .card-body .col-form-label {
+  font-weight: 700;
+}
+#maritalManagement .card-body .marital--list {
+  max-height: 40rem;
+  overflow-y: scroll;
+}
+#maritalManagement .card-body .marital--create form .row {
+  margin-top: 1rem;
+}
+#maritalManagement .card-body #marital-list-body .btn {
+  color: #fff;
+  line-height: 1.3;
+  font-size: 0.6rem;
+}
+#maritalManagement .card-body #marital-list-body .maritalName {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
