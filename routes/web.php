@@ -50,13 +50,6 @@ Route::prefix('cities')
     });
 
 // OCCUPATIONS
-Route::prefix('occupations-show/')
-    ->middleware(['auth'])
-    ->controller('App\Http\Controllers\Occupation\OccupationShowController')
-    ->group(function(){
-        route::get('main', 'main')->name('occupations-show.main');
-    });
-
 Route::resource('occupations', 'App\Http\Controllers\Occupation\OccupationController')
     ->middleware(['auth']);
 

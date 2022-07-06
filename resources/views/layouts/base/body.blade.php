@@ -135,7 +135,7 @@
             <ul class="dropdown-menu dropdown--ul">
               <x-dropdown.item
                 title="Ocupação"
-                route="occupations-show.main"
+                route="occupations.index"
                 tooltip="Gerenciar lista de ocupações"
               />
               <x-dropdown.item

@@ -16,7 +16,9 @@ class OccupationController extends Controller
      */
     public function index()
     {
+        $occupations = Occupation::orderBy('name')->get();
         
+        return view('occupation.main', compact('occupations'));
     }
 
     /**
