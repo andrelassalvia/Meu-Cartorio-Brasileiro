@@ -10696,8 +10696,22 @@ main {
   max-height: 40rem;
   overflow-y: scroll;
 }
-#occupationsManagement .card-body .occupations--create form .row {
+#occupationsManagement .card-body .occupations--list #occupationsList {
+  position: relative;
+}
+#occupationsManagement .card-body .occupations--list #occupationsList .loading {
+  position: absolute;
+  top: 0.5rem;
+  left: 11rem;
+}
+#occupationsManagement .card-body .occupations--create #occupationStore .row {
   margin-top: 1rem;
+}
+#occupationsManagement .card-body .occupations--create #occupationStore .row .error {
+  color: #f03e3e;
+  font-weight: 600;
+  padding-top: 0.4rem;
+  text-align: center;
 }
 #occupationsManagement #listBody .btn {
   color: #fff;

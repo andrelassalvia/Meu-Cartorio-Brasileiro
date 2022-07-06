@@ -6,7 +6,14 @@
         :id="'occupationsManagement'"
         title=""
     >
-    <x-slot name="buttons"></x-slot>
+    <x-slot name="buttons">
+        <x-buttons.button
+            color="danger"
+            type="button"
+            title="Voltar"
+            :id="'back-from-occupations'"
+        />
+        </x-slot>
 
         <div class="row d-flex">
 
@@ -18,6 +25,9 @@
                 >
                     <x-slot name="buttons"></x-slot>
 
+                    {{-- SPINNER --}}
+                    <div class="spinner-border spinner-border-sm text-secondary loading" role="status"></div>
+
                     {{-- TABLE --}}
                     <table class="table table-bordered">
                         <thead>
@@ -27,7 +37,6 @@
                             </tr>
                         </thead>
                         <tbody id="listBody">
-                            @include('occupation.list')
                         </tbody>
                     </table>
                 </x-cards.card-main>
@@ -44,24 +53,46 @@
                             color="success"
                             type="submit"
                             title="Salvar"
+                            :id="'save-occupation'"
                         />
                     </x-slot>
 
-                    <form action="{{ route('occupations.store') }}" method="post">
+                    <form id="occupationStore" action="{{ route('occupations.store') }}" method="post">
                         @csrf
-                        <x-forms.inline-label
-                            colName="name"
-                            title="Nome da ocupação"
-                            colSize="8"
-                            labelSize="3"
-                            type="text"
-                            req=""
-                        />
+                        <div class="mb-3 row">
+                            <label 
+                                for="name" 
+                                class="col-sm-3 col-form-label"
+                            > 
+                                Nome da ocupação 
+                            </label>
+                            <div class="col-sm-8">
+                              <input 
+                                type="text" 
+                                class="form-control form-control-sm" 
+                                name="name">
+                            </div>
+                            @if ($errors->has('name'))
+                                <p class="error">{{ $errors->first('name') }}</p>
+                            @endif
+                        </div>
                     </form>
+                        
                 </x-cards.card-main>
             </div>
         </div>
 
     </x-cards.card-main>
+
+    {{-- Script to load list of occupations --}}
+    <script type="text/javascript" src="{{ asset('js/loadSupportLists.js') }}"></script>
+
+    {{-- Script to submit form --}}
+    <script type="text/javascript" src="{{ asset('js/submitForm.js') }}"></script>
+
+    {{-- Script to load the spinner --}}
+    <script type="text/javascript" src="{{ asset('js/spinner.js') }}"></script>
+        
+    
 
 @endsection

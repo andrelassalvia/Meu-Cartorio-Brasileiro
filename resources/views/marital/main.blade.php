@@ -44,6 +44,7 @@
                             color="success"
                             type="submit"
                             title="Salvar"
+                            :id="'save-new-marital'"
                         />
                     </x-slot>
 

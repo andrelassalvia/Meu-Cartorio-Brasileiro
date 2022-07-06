@@ -11,6 +11,7 @@
         color="danger"
         type="button"
         title="Voltar"
+        :id="'back-from-orders-list'"
       />
       <x-buttons.a-link
         route="service-orders.create"

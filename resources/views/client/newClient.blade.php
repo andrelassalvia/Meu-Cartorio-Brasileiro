@@ -11,11 +11,13 @@
       color="danger"
       type="button"
       title="Voltar"
+      :id="'back-from-new-client'"
     />
     <x-buttons.button
       color="success"
       type="submit"
       title="Salvar"
+      :id="'save-new-client'"
     />
   </x-slot>
   <form action="{{ route('clients.store') }}" method="post">

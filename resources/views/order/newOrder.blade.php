@@ -11,11 +11,13 @@
       color="danger"
       type="button"
       title="Voltar"
+      :id="'back-from-new-order'"
     />
     <x-buttons.button
       color="success"
       type="submit"
       title="Salvar"
+      :id="'save-new-order'"
     />
   </x-slot>
 

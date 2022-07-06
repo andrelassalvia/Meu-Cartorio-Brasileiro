@@ -9,16 +9,18 @@ class button extends Component
     public $color;
     public $type;
     public $title;
+    public $id;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($color, $type, $title)
+    public function __construct($color, $type, $title, $id)
     {
         $this-> color = $color;
         $this-> type = $type;
         $this-> title = $title;
+        $this-> id = $id;
     }
 
     /**

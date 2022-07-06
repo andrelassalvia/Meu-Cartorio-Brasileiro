@@ -58,6 +58,13 @@ Route::resource('marital-status', 'App\Http\Controllers\MaritalStatusController'
     ->middleware(['auth']);
 
 // OCCUPATIONS
+Route::prefix('occupations-main')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\Occupation\OccupationMainController')
+    ->group(function(){
+        route::get('/', 'main')->name('occupations-main.main');
+    });
+
 Route::resource('occupations', 'App\Http\Controllers\Occupation\OccupationController')
     ->middleware(['auth']);
 

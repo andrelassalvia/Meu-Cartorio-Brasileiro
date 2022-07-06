@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Occupation extends Model
 {
@@ -24,8 +25,19 @@ class Occupation extends Model
     protected $table = 'occupations';
 
     // ======= RELATIONSHIPS ========= //
+
     public function clients()
     {
         return $this->belongsTo(Client::class, 'occupation_id', 'id');
+    }
+
+    // ===== METHODS ===== //
+
+    /**
+     * capitalize occupations name
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = Str::ucfirst($value);
     }
 }

@@ -21,11 +21,28 @@
         .occupations--list {
             max-height: 40rem;
             overflow-y: scroll;
+
+            #occupationsList {
+                position: relative;
+
+                .loading {
+                    position: absolute;
+                    top: 0.5rem;
+                    left: 11rem;
+                }
+            }
         }
         .occupations--create {
-            form {
+            #occupationStore {
                 .row {
                     margin-top: 1rem;
+
+                    .error {
+                        color: $error;
+                        font-weight: 600;
+                        padding-top: 0.4rem;
+                        text-align: center;
+                    }
                 }
             }
         }
