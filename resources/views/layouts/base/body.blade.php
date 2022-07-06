@@ -132,8 +132,32 @@
           </div>
           <div class="dropdown dropdown--menu">
             <a class="dropdown-toggle" href="#" data-bs-toggle="dropdown">Apoio</a>
-            <ul class="dropdown-menu dropdown-ul">
-              <li></li>
+            <ul class="dropdown-menu dropdown--ul">
+              <x-dropdown.item
+                title="Ocupação"
+                route="occupations-show.main"
+                tooltip="Gerenciar lista de ocupações"
+              />
+              <x-dropdown.item
+                title="Estado civil"
+                route=""
+                tooltip="Gerenciar estado civil"
+              />
+              <x-dropdown.item
+                title="Países"
+                route=""
+                tooltip="Gerenciar lista de países"
+              />
+              <x-dropdown.item
+                title="Cidades no exterior"
+                route=""
+                tooltip="Gerenciar lista de cidades"
+              />
+              <x-dropdown.item
+                title="Tipos de demanda"
+                route=""
+                tooltip="Gerenciar lista de tipos de demanda"
+              />
             </ul>
           </div>
         </ul>

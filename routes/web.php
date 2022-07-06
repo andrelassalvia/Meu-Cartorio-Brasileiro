@@ -49,6 +49,21 @@ Route::prefix('cities')
         route::get('/{country}', 'loadCities')->name('cities.loadCities');
     });
 
+// OCCUPATIONS
+Route::prefix('occupations-show/')
+    ->middleware(['auth'])
+    ->controller('App\Http\Controllers\Occupation\OccupationShowController')
+    ->group(function(){
+        route::get('main', 'main')->name('occupations-show.main');
+    });
+
+Route::resource('occupations', 'App\Http\Controllers\Occupation\OccupationController')
+    ->middleware(['auth']);
+
+// PROVIDERS
+Route::resource('providers', 'App\Http\Controllers\ProviderController')
+->middleware(['auth']);
+
 // SERVICE ORDERS
 Route::prefix('orders/')
     ->middleware(['auth'])
@@ -60,6 +75,4 @@ Route::prefix('orders/')
 Route::resource('service-orders', 'App\Http\Controllers\Order\ServiceOrderController')
     ->middleware(['auth']);
 
-// PROVIDERS
-Route::resource('providers', 'App\Http\Controllers\ProviderController')
-    ->middleware(['auth']);
+

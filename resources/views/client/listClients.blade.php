@@ -108,10 +108,11 @@
       
     </div>
 
-    {{-- BUTTONS --}}
+    {{-- SEARCH BUTTONS --}}
     <x-forms.search-buttons/>
   </form>
 
+  {{-- TABLE --}}
   <table class="table table-bordered">
     <thead>
       <tr>
