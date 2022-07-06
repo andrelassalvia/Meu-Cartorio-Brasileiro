@@ -76,4 +76,8 @@ Route::prefix('orders/')
 Route::resource('service-orders', 'App\Http\Controllers\Order\ServiceOrderController')
     ->middleware(['auth']);
 
+// SERVICES TYPES
+route::resource('service-types', 'App\Http\Controllers\ServiceTypeController')
+    ->middleware(['auth']);
+
 

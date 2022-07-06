@@ -155,7 +155,7 @@
               />
               <x-dropdown.item
                 title="Tipos de demanda"
-                route=""
+                route="service-types.index"
                 tooltip="Gerenciar lista de tipos de demanda"
               />
             </ul>
