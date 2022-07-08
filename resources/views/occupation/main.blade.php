@@ -84,6 +84,8 @@
 
     </x-cards.card-main>
 
+    @include('occupation.modal')
+
     {{-- Script to load list of occupations --}}
     <script type="text/javascript" src="{{ asset('js/loadSupportLists.js') }}"></script>
 
@@ -92,6 +94,11 @@
 
     {{-- Script to load the spinner --}}
     <script type="text/javascript" src="{{ asset('js/spinner.js') }}"></script>
+
+    {{-- Script to show a modal when a delete button is triggered --}}
+    <script type="text/javascript" src="{{ asset('js/modalDeleteItem.js') }}"></script>
+
+    
         
     
 

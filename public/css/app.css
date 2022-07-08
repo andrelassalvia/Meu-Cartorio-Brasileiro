@@ -10704,6 +10704,10 @@ main {
   top: 0.5rem;
   left: 11rem;
 }
+#occupationsManagement .card-body .occupations--list #listBody .btn--disabled {
+  background-color: #ffe3e3;
+  color: #343a40;
+}
 #occupationsManagement .card-body .occupations--create #occupationStore .row {
   margin-top: 1rem;
 }
@@ -10721,6 +10725,11 @@ main {
 #occupationsManagement #listBody .occupationName {
   font-size: 0.8rem;
   font-weight: 600;
+}
+
+#showOccupation .modal--title {
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 #maritalManagement .card-header {

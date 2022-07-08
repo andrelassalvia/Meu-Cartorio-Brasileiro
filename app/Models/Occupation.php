@@ -28,7 +28,7 @@ class Occupation extends Model
 
     public function clients()
     {
-        return $this->belongsTo(Client::class, 'occupation_id', 'id');
+        return $this->hasMany(Client::class, 'occupation_id', 'id');
     }
 
     // ===== METHODS ===== //

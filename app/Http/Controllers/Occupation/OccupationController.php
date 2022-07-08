@@ -17,8 +17,8 @@ class OccupationController extends Controller
      */
     public function index()
     {
-        $occupations = Occupation::orderBy('name')->get();
-        
+        $occupations = Occupation::with(['clients'])->orderBy('name')->get();
+
         return view('occupation.list', compact('occupations'));
     }
 
@@ -42,6 +42,7 @@ class OccupationController extends Controller
     {
         $dataForm = $request->except('_token');
         Occupation::create($dataForm);
+        
         return redirect()->back();
     }
 
@@ -53,7 +54,9 @@ class OccupationController extends Controller
      */
     public function show($id)
     {
-        //
+        $occupation = Occupation::find($id);
+
+        return view('occupation.show', compact('occupation'));
     }
 
     /**
@@ -87,6 +90,9 @@ class OccupationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $occupation = Occupation::find($id);
+        $occupation = $occupation->delete();
+
+        return response()->json($occupation);
     }
 }
