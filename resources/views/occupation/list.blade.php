@@ -1,20 +1,28 @@
 @foreach ($occupations as $occupation)
-
-  <tr data-id="{{ $occupation->id }}">
+  
+  <tr> 
     <td class="occupationName">{{ $occupation->name }}</td>
     @if (empty($occupation->clients[0]))
-        <td width=130px>
-          <button 
-          class="btn btn-danger btn-sm "
-          data-bs-toggle="modal"
-          data-bs-target="#showOccupation"
-          id="deleteButton"
-          
+      <td width=130px>
+        <button 
+        class="btn btn-danger btn-sm "
+        data-bs-toggle="modal"
+        data-bs-target="#showOccupation"
+        id="deleteButton"
+        data-id="{{ $occupation->id }}"
         >
           Apagar
         </button>
-          <a href="#" class="btn btn-secondary btn-sm">Editar</a>
-        </td>
+        <button 
+          class="btn btn-secondary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#showOccupation"
+          data-id="{{ $occupation->id }}"
+          id="editButton"
+        >
+          Editar
+        </button>
+      </td>
 
     @else
       <td width=130px>
@@ -25,10 +33,17 @@
         >
           Apagar
         </button>
-        <a href="#" class="btn btn-secondary btn-sm">Editar</a>
+        <button 
+          class="btn btn-secondary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#showOccupation"
+          data-id="{{ $occupation->id }}"
+          id="editButton"
+        >
+          Editar
+        </button>
       </td>
     @endif
-    
   </tr>
     
 @endforeach

@@ -9,7 +9,6 @@
     <div class="modal-content">
       
       <div id="message">
-        
       </div>
       
     </div>

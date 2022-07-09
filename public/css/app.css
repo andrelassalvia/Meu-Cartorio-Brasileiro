@@ -10731,6 +10731,9 @@ main {
   font-size: 1rem;
   font-weight: 500;
 }
+#showOccupation .modal--input {
+  font-size: 0.9rem;
+}
 
 #maritalManagement .card-header {
   display: flex;

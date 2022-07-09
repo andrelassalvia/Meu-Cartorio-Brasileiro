@@ -67,7 +67,9 @@ class OccupationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $occupation = Occupation::find($id);
+
+        return view('occupation.edit', compact('occupation'));
     }
 
     /**
@@ -79,7 +81,11 @@ class OccupationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $occupation = Occupation::find($id);
+        $dataForm = $request->except('_token');
+        $update = $occupation->update($dataForm);
+
+        return $update;
     }
 
     /**

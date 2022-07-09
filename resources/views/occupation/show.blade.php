@@ -1,4 +1,4 @@
-{{-- Modal to show occupation that will be deleted --}}
+{{-- Content of Modal to show occupation that will be deleted --}}
 <div  class="modal-body">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <p 
