@@ -44,42 +44,7 @@
 			</div>
 
 			{{-- CREATE OCCUPATION --}}
-			<div class="occupations--create col-sm-6">
-				<x-cards.card-main
-					:id="'occupationsCreate'"
-					title="Inserir nova ocupação"
-				>
-					<x-slot name="buttons">
-						<x-buttons.button
-							color="success"
-							type="submit"
-							title="Salvar"
-							:id="'save-occupation'"
-						/>
-					</x-slot>
-
-					<form id="occupationStore" action="{{ route('occupations.store') }}" method="post">
-						@csrf
-						<div class="mb-3 row">
-							<label 
-								for="name" 
-								class="col-sm-3 col-form-label"
-							> 
-								Nome da ocupação 
-							</label>
-							<div class="col-sm-8">
-								<input 
-									type="text" 
-									class="form-control form-control-sm" 
-									name="name">
-							</div>
-							@if ($errors->has('name'))
-									<p class="error">{{ $errors->first('name') }}</p>
-							@endif
-						</div>
-					</form>
-								
-				</x-cards.card-main>
+			<div class="occupations--create col-sm-6" id="occupationBody">
 			</div>
 
 		</div>
@@ -92,8 +57,8 @@
     {{-- Script to load list of occupations --}}
     <script type="text/javascript" src="{{ asset('js/loadSupportLists.js') }}"></script>
 
-    {{-- Script to submit create form --}}
-    <script type="text/javascript" src="{{ asset('js/submitForm.js') }}"></script>
+		{{-- Script to show create form --}}
+		<script type="text/javascript" src="{{ asset('js/createSupportRegister.js') }}"></script>
 
     {{-- Script to load the spinner --}}
     <script type="text/javascript" src="{{ asset('js/spinner.js') }}"></script>

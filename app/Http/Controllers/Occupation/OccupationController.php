@@ -29,7 +29,7 @@ class OccupationController extends Controller
      */
     public function create()
     {
-        //
+        return view('occupation.create');
     }
 
     /**
