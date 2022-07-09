@@ -1,3 +1,3 @@
-$("#save-occupation").on("click", function () {
-    $("#occupationStore").submit();
+$("#save").on("click", function () {
+    $("#store").submit();
 });

@@ -24,4 +24,8 @@ class MaritalStatus extends Model
     protected $table = 'marital_status';
 
     // ======= RELATIONSHIPS ========= //
+    public function clients()
+    {
+        return $this->hasMany(Client::class, 'maritalstatus_id', 'id');
+    }
 }

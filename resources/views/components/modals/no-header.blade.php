@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div 
   class="modal fade" 
-  id="showOccupation" 
+  id="mainSupportModal" 
   tabindex="-1" 
   aria-hidden="true"
 >

@@ -10692,46 +10692,46 @@ main {
 #occupationsManagement .card-body .col-form-label {
   font-weight: 700;
 }
-#occupationsManagement .card-body .occupations--list {
+#occupationsManagement .card-body .main--list {
   max-height: 40rem;
   overflow-y: scroll;
 }
-#occupationsManagement .card-body .occupations--list #occupationsList {
+#occupationsManagement .card-body .main--list #occupationsList {
   position: relative;
 }
-#occupationsManagement .card-body .occupations--list #occupationsList .loading {
+#occupationsManagement .card-body .main--list #occupationsList .loading {
   position: absolute;
   top: 0.5rem;
   left: 11rem;
 }
-#occupationsManagement .card-body .occupations--list #listBody .btn--disabled {
+#occupationsManagement .card-body .main--list #listBody .btn {
+  color: #fff;
+  line-height: 1.3;
+  font-size: 0.6rem;
+}
+#occupationsManagement .card-body .main--list #listBody .occupationName {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+#occupationsManagement .card-body .main--list #listBody .btn--disabled {
   background-color: #ffe3e3;
   color: #343a40;
 }
-#occupationsManagement .card-body .occupations--create #occupationStore .row {
+#occupationsManagement .card-body .main--create #store .row {
   margin-top: 1rem;
 }
-#occupationsManagement .card-body .occupations--create #occupationStore .row .error {
+#occupationsManagement .card-body .main--create #store .row .error {
   color: #f03e3e;
   font-weight: 600;
   padding-top: 0.4rem;
   text-align: center;
 }
-#occupationsManagement #listBody .btn {
-  color: #fff;
-  line-height: 1.3;
-  font-size: 0.6rem;
-}
-#occupationsManagement #listBody .occupationName {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
 
-#showOccupation .modal--title {
+#mainSupportModal .modal--title {
   font-size: 1rem;
   font-weight: 500;
 }
-#showOccupation .modal--input {
+#mainSupportModal .modal--input {
   font-size: 0.9rem;
 }
 
@@ -10751,21 +10751,33 @@ main {
 #maritalManagement .card-body .col-form-label {
   font-weight: 700;
 }
-#maritalManagement .card-body .marital--list {
+#maritalManagement .card-body .main--list {
   max-height: 40rem;
   overflow-y: scroll;
 }
-#maritalManagement .card-body .marital--create form .row {
-  margin-top: 1rem;
+#maritalManagement .card-body .main--list #maritalList {
+  position: relative;
 }
-#maritalManagement .card-body #marital-list-body .btn {
+#maritalManagement .card-body .main--list #maritalList .loading {
+  position: absolute;
+  top: 0.5rem;
+  left: 7rem;
+}
+#maritalManagement .card-body .main--list #listBody .btn {
   color: #fff;
   line-height: 1.3;
   font-size: 0.6rem;
 }
-#maritalManagement .card-body #marital-list-body .maritalName {
+#maritalManagement .card-body .main--list #listBody .maritalName {
   font-size: 0.8rem;
   font-weight: 600;
+}
+#maritalManagement .card-body .main--list #listBody .btn--disabled {
+  background-color: #ffe3e3;
+  color: #343a40;
+}
+#maritalManagement .card-body .main--create form .row {
+  margin-top: 1rem;
 }
 
 #countriesManagement .card-header {

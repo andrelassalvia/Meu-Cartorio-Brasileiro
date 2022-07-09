@@ -18,7 +18,10 @@
 		<div class="row d-flex">
 
 			{{-- LIST OF OCCUPATIONS --}}
-			<div class="occupations--list col-sm-6">
+			<div 
+				class="main--list col-sm-6"
+				data-route="{{ route('occupations.index') }}"
+			>
 				<x-cards.card-main
 					:id="'occupationsList'"
 					title="Lista de ocupações"
@@ -44,7 +47,11 @@
 			</div>
 
 			{{-- CREATE OCCUPATION --}}
-			<div class="occupations--create col-sm-6" id="occupationBody">
+			<div 
+				class="main--create col-sm-6" 
+				id="create-body"
+				data-create="{{ route('occupations.create') }}"
+				>
 			</div>
 
 		</div>
@@ -52,7 +59,7 @@
 	</x-cards.card-main>
 
     {{-- SHOW MODAL TO DELETE OR EDIT --}}
-    @include('occupation.modal')
+		<x-modals.no-header/>
 
     {{-- Script to load list of occupations --}}
     <script type="text/javascript" src="{{ asset('js/loadSupportLists.js') }}"></script>

@@ -7,7 +7,7 @@
         <button 
         class="btn btn-danger btn-sm "
         data-bs-toggle="modal"
-        data-bs-target="#showOccupation"
+        data-bs-target="#mainSupportModal"
         id="deleteButton"
         data-id="{{ $occupation->id }}"
         >
@@ -16,7 +16,7 @@
         <button 
           class="btn btn-secondary btn-sm"
           data-bs-toggle="modal"
-          data-bs-target="#showOccupation"
+          data-bs-target="#mainSupportModal"
           data-id="{{ $occupation->id }}"
           id="editButton"
         >
@@ -36,7 +36,7 @@
         <button 
           class="btn btn-secondary btn-sm"
           data-bs-toggle="modal"
-          data-bs-target="#showOccupation"
+          data-bs-target="#mainSupportModal"
           data-id="{{ $occupation->id }}"
           id="editButton"
         >
@@ -48,4 +48,3 @@
     
 @endforeach
 
-<script src="{{ asset('js/tooltip.js') }}"></script>

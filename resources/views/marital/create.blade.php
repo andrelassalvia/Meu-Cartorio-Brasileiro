@@ -1,6 +1,6 @@
 <x-cards.card-main
-  :id="'occupationsCreate'"
-  title="Inserir nova ocupação"
+  :id="'maritalCreate'"
+  title="Inserir novo estado civil"
 >
   <x-slot name="buttons">
     <x-buttons.button
@@ -11,14 +11,14 @@
     />
   </x-slot>
 
-  <form id="store" action="{{ route('occupations.store') }}" method="post">
+  <form id="store" action="{{ route('marital-status.store') }}" method="post">
     @csrf
     <div class="mb-3 row">
       <label 
         for="name" 
         class="col-sm-3 col-form-label"
       > 
-        Nome da ocupação 
+        Nome 
       </label>
       <div class="col-sm-8">
         <input 
@@ -27,7 +27,7 @@
           name="name">
       </div>
       @if ($errors->has('name'))
-          <p class="error">{{ $errors->first('name') }}</p>
+        <p class="error">{{ $errors->first('name') }}</p>
       @endif
     </div>
   </form>
@@ -36,3 +36,4 @@
 
 {{-- Script to submit create form --}}
 <script type="text/javascript" src="{{ asset('js/submitForm.js') }}"></script>
+

@@ -16,7 +16,7 @@ class MaritalStatusController extends Controller
     {
         $maritalStatus = MaritalStatus::orderBy('name')->get();
 
-       
+        return view('marital.list', compact('maritalStatus'));
     }
 
     /**
@@ -26,7 +26,7 @@ class MaritalStatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('marital.create');
     }
 
     /**

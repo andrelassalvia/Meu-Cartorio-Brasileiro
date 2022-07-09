@@ -18,27 +18,42 @@
             font-weight: 700;
         }
 
-        .marital--list {
+        .main--list {
             max-height: 40rem;
             overflow-y: scroll;
+
+            #maritalList {
+                position: relative;
+
+                .loading {
+                    position: absolute;
+                    top: 0.5rem;
+                    left: 7rem;
+                }
+            }
+
+            #listBody {
+                .btn {
+                    color: #fff;
+                    line-height: 1.3;
+                    font-size: 0.6rem;
+                }
+                .maritalName {
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                }
+
+                .btn--disabled {
+                    background-color: #ffe3e3;
+                    color: $text-button-gray;
+                }
+            }
         }
-        .marital--create {
+        .main--create {
             form {
                 .row {
                     margin-top: 1rem;
                 }
-            }
-        }
-
-        #marital-list-body {
-            .btn {
-                color: #fff;
-                line-height: 1.3;
-                font-size: 0.6rem;
-            }
-            .maritalName {
-                font-size: 0.8rem;
-                font-weight: 600;
             }
         }
     }
