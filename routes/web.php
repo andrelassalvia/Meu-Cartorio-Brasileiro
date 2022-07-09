@@ -54,18 +54,15 @@ Route::resource('countries', 'App\Http\Controllers\CountryController')
     ->middleware(['auth']);
 
 // MARITAL STATUS
+Route::view('/marital-status-main', 'marital.main')
+    ->name('marital-status-main.main');
 Route::resource('marital-status', 'App\Http\Controllers\MaritalStatusController')
     ->middleware(['auth']);
 
 // OCCUPATIONS
-Route::prefix('occupations-main')
-    ->middleware(['auth'])
-    ->controller('App\Http\Controllers\Occupation\OccupationMainController')
-    ->group(function(){
-        route::get('/', 'main')->name('occupations-main.main');
-    });
-
-Route::resource('occupations', 'App\Http\Controllers\Occupation\OccupationController')
+Route::view('/occupations-main', 'occupation.main')
+    ->name('occupations-main.main');
+Route::resource('occupations', 'App\Http\Controllers\OccupationController')
     ->middleware(['auth']);
 
 // PROVIDERS

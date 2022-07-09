@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Occupation;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Occupation;
 use Illuminate\Http\Request;
 use App\Http\Requests\OccupationRequest;
-use App\Models\Occupation;
-use Barryvdh\Debugbar\Facades\Debugbar;
 
 class OccupationController extends Controller
 {

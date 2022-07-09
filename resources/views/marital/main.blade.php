@@ -26,9 +26,9 @@
                                 <th>Ação</th>
                             </tr>
                         </thead>
-                        <tbody id="marital-list-body">
+                        {{-- <tbody id="marital-list-body">
                             @include('marital.list')
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </x-cards.card-main>
             </div>
