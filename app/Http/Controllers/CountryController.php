@@ -14,9 +14,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::orderBy('name')->get();
 
-        return view('country.main', compact('countries'));
+        return view('country.main');
     }
 
     /**

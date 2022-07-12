@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ServiceType;
 use Illuminate\Http\Request;
 
 class ServiceTypeController extends Controller
@@ -14,9 +13,7 @@ class ServiceTypeController extends Controller
      */
     public function index()
     {
-        $services = ServiceType::orderBy('name')->get();
-
-        return view('serviceType.main', compact('services'));
+        return view('serviceType.main');
     }
 
     /**

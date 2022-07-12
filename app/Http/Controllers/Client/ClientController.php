@@ -5,11 +5,6 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
-use App\Models\BrazilState;
-use App\Models\Country;
-use App\Models\MaritalStatus;
-use App\Models\Occupation;
-use App\Models\ServiceType;
 use App\Models\ServiceOrder;
 use App\Models\Comment;
 
@@ -23,14 +18,11 @@ class ClientController extends Controller
     public function index()
     {
         $title = 'Todos os clientes';
-        $serviceTypes = ServiceType::orderBy('name')->get();
-        $brazilStates = BrazilState::orderBy('name')->get();
-        $countries = Country::orderBy('name')->get();
         $clients = Client::orderBy('updated_at')->paginate(15);
 
         return view(
             'client.listClients', 
-            compact('serviceTypes', 'brazilStates', 'countries', 'clients', 'title')
+            compact('clients', 'title')
         );
     }
 
@@ -42,14 +34,10 @@ class ClientController extends Controller
     public function create()
     {
         $title = 'Novo cliente';
-        $brazilStates = BrazilState::orderBy('name')->get();
-        $countries = Country::orderBy('name')->get();
-        $maritalStatus = MaritalStatus::orderBy('name')->get();
-        $occupations = Occupation::orderBy('name')->get();
 
         return view(
             'client.newClient', 
-            compact('brazilStates', 'countries', 'maritalStatus', 'occupations', 'title')
+            compact('title')
         );
     }
 

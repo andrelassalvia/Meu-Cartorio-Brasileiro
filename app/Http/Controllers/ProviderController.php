@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Provider;
-use App\Models\BrazilState;
 use App\Models\Classification;
 
 class ProviderController extends Controller
@@ -17,12 +15,10 @@ class ProviderController extends Controller
     public function index()
     {
         $title = 'Lista de fornecedores';
-        $brazilStates = BrazilState::orderBy('name')->get();
         $classifications = Classification::all();
-        $providers = Provider::orderBy('updated_at')->paginate(15);
         return view(
             'provider.listProviders', 
-            compact('brazilStates', 'classifications', 'providers', 'title')
+            compact('classifications', 'title')
         );
     }
 
@@ -33,8 +29,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        $brazilStates = BrazilState::orderBy('name')->get();
-        return view('provider.newProvider', compact('brazilStates'));
+        return view('provider.newProvider');
     }
 
     /**

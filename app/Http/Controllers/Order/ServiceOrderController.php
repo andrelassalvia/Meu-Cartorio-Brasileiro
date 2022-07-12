@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\ServiceOrder;
-use App\Models\ServiceType;
 
 class ServiceOrderController extends Controller
 {
@@ -30,9 +28,8 @@ class ServiceOrderController extends Controller
         $title = "Nova ordem";
         $today = Carbon::today()->toDateString();
         $today = Carbon::parse($today)->format('d / m / Y');
-        $serviceTypes = ServiceType::orderBy('name')->get();
 
-        return view('order.newOrder', compact('today', 'serviceTypes', 'title'));
+        return view('order.newOrder', compact('today', 'title'));
     }
 
     /**

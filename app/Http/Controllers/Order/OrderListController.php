@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ServiceOrder;
 use App\Models\BrazilState;
 use App\Models\ServiceType;
@@ -11,6 +10,9 @@ use App\Models\OrderStatus;
 
 class OrderListController extends Controller
 {
+    /**
+     * Method to list orders b status
+     */
     public function list($status)
     {
         switch ($status) {
