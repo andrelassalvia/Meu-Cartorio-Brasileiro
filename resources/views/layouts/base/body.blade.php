@@ -38,43 +38,71 @@
                 route="clients.create"
                 tooltip="Novo cliente"
               />
-              <a 
-                class="dropdown-item" 
-                href="{{ route('clients.list', 1) }}"
-                data-bs-toggle="tooltip"
-                title="Lista os clientes que entraram em contato mas não iniciaram uma ordem de serviço"
-              >
-                Potenciais
-              </a>
-              <a 
-                class="dropdown-item" 
-                href="{{ route('clients.list', 3) }}"
-                data-bs-toggle="tooltip"
-                title="Lista de clientes com ordens de serviço em andamento"
-              >
-                Ordens em andamento
-              </a>
-              <a 
-                class="dropdown-item" 
-                href="{{ route('clients.list', 4) }}"
-                data-bs-toggle="tooltip"
-                title="LIsta clientes com ordens de serviço encerradas"
-              >
-                Ordens encerradas
-              </a>
-              <a 
-                class="dropdown-item" 
-                href="{{ route('clients.list', 2) }}"
-                data-bs-toggle="tooltip"
-                title="Lista contatos que não se tornaram clientes"
-              >
-                Inativos
-              </a>
-              <x-dropdown.item 
-                title="Todos os clientes" 
-                route="clients.index"
-                tooltip="Listagem de todos os clientes já cadastrados"
-              />
+
+              {{-- Potential clients --}}
+              <form action="{{ route('clients.index') }}" method="get">
+                <input type="hidden" name="clientStatus" value="1">
+                <button
+                  type="submit"
+                  class="dropdown-item" 
+                  data-bs-toggle="tooltip"
+                  title="Lista os clientes que entraram em contato mas não iniciaram uma ordem de serviço"
+                >
+                  Potenciais
+                </button>
+              </form>
+
+              {{-- Clients with orders running --}}
+              <form action="{{ route('clients.index') }}" method="get">
+                <input type="hidden" name="clientStatus" value="3">
+                <button
+                  type="submit"
+                  class="dropdown-item" 
+                  data-bs-toggle="tooltip"
+                  title="Lista de clientes com ordens de serviço em andamento"
+                >
+                  Ordens em andamento
+                </button>
+              </form>
+              
+              {{-- Clients with finished orders --}}
+              <form action="{{ route('clients.index') }}" method="get">
+                <input type="hidden" name="clientStatus" value="4">
+                <button
+                  type="submit"
+                  class="dropdown-item" 
+                  data-bs-toggle="tooltip"
+                  title="LIsta clientes com ordens de serviço encerradas"
+                >
+                  Ordens encerradas
+                </button>
+              </form>
+              
+              {{-- Inactive Clients  --}}
+              <form action="{{ route('clients.index') }}" method="get">
+                <input type="hidden" name="clientStatus" value="2">
+                <button
+                  type="submit"
+                  class="dropdown-item" 
+                  data-bs-toggle="tooltip"
+                  title="Lista contatos que não se tornaram clientes"
+                >
+                  Inativos
+                </button>
+              </form>
+
+              {{-- All Clients  --}}
+              <form action="{{ route('clients.index') }}" method="get">
+                <input type="hidden" name="clientStatus" value="">
+                <button
+                  type="submit"
+                  class="dropdown-item" 
+                  data-bs-toggle="tooltip"
+                  title="Listagem de todos os clientes já cadastrados"
+                >
+                  Todos os clientes
+                </button>
+              </form>
             </ul>
           </div>
           <div class="dropdown dropdown--menu">

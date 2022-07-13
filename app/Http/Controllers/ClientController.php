@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\ServiceOrder;
@@ -15,11 +14,40 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $title = 'Todos os clientes';
-        $clients = Client::orderBy('updated_at')->paginate(15);
+        $clientStatus = $request->clientStatus;
 
+        switch ($clientStatus) {
+            case 1:
+                $title = 'Clientes potenciais';
+                break;
+
+            case 2:
+                $title = 'Clientes inativos';
+                break;
+
+            case 3:
+                $title = 'Clientes com ordens';
+                break;
+
+            case 4:
+                $title = 'Clientes com ordens encerradas';
+                break;
+
+            default:
+                $title = 'Todos os clientes';
+                break;
+        }
+
+        if($clientStatus == null){
+            $clients = Client::orderBy('updated_at')->paginate(15);
+        } else{
+            $clients = Client::where('clientstatus_id', $clientStatus)
+                ->orderBy('updated_at')
+                ->paginate(15);
+        }
+        
         return view(
             'client.listClients', 
             compact('clients', 'title')
