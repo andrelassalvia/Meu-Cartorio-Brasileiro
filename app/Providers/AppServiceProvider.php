@@ -10,6 +10,7 @@ use App\Http\View\Composers\BrazilStateComposer;
 use App\Http\View\Composers\CountryComposer;
 use App\Http\View\Composers\MaritalStatusComposer;
 use App\Http\View\Composers\OccupationComposer;
+use App\Http\View\Composers\OrderStatusComposer;
 use App\Http\View\Composers\ProviderComposer;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,11 +38,25 @@ class AppServiceProvider extends ServiceProvider
         // ===== RUN VIEW COMPOSERS =====
 
         // list service type
-        View::composer(['client.listClients', 'order.newOrder', 'serviceType.main'], ServiceTypeComposer::class);
+        View::composer(
+            [
+                'client.listClients', 
+                'order.newOrder', 
+                'serviceType.main',
+                'order.listOrders'
+            ], 
+            ServiceTypeComposer::class
+        );
 
         // list brazil states
         View::composer(
-            ['client.listClients', 'client.newClient', 'provider.listProviders', 'provider.newProvider'], 
+            [
+                'client.listClients', 
+                'client.newClient', 
+                'provider.listProviders', 
+                'provider.newProvider',
+                'order.listOrders'
+            ], 
             BrazilStateComposer::class
         );
 
@@ -58,9 +73,18 @@ class AppServiceProvider extends ServiceProvider
         );
 
         // list occupations
-        View::composer(['client.newClient', 'occupation.list'], OccupationComposer::class);
+        View::composer(
+            [
+                'client.newClient', 
+                'occupation.list'
+            ], 
+            OccupationComposer::class
+        );
 
         // Providers
         View::composer(['provider.listProviders'], ProviderComposer::class);
+
+        // Order Status
+        View::composer(['order.listOrders'], OrderStatusComposer::class);
     }
 }

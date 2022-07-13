@@ -119,22 +119,32 @@
                 route="service-orders.create"
                 tooltip="Nova ordem de serviço"
               />
-              <a 
-                class="dropdown-item" 
-                href="{{ route('orders.list', 7) }}"
-                data-bs-toggle="tooltip"
-                title="LIsta clientes com ordens de serviço encerradas"
-              >
-                Encerradas
-              </a>
-              <a 
-                class="dropdown-item" 
-                href="{{ route('orders.list', 1) }}"
-                data-bs-toggle="tooltip"
-                title="LIsta clientes com ordens de serviço em andamento"
-              >
-                Em andamento
-              </a>
+
+              {{-- Finished Orders --}}
+              <form action="{{ route('service-orders.index') }}" method="GET">
+                <input type="hidden" name="orderstatus_id" value="7">
+                <button 
+                  type="submit"
+                  class="dropdown-item"
+                  data-bs-toggle="tooltip"
+                  title="LIsta clientes com ordens de serviço encerradas"
+                >
+                  Encerradas
+                </button>
+              </form>
+              
+              {{-- Orders Running --}}
+              <form action="{{ route('service-orders.index') }}" method="GET">
+                <input type="hidden" name="orderstatus_id" value="1">
+                <button 
+                  type="submit"
+                  class="dropdown-item"
+                  data-bs-toggle="tooltip"
+                  title="LIsta clientes com ordens de serviço em andamento"
+                >
+                  Em andamento
+                </button>
+              </form>
             </ul>
           </div>
           <div class="dropdown dropdown--menu">
@@ -196,6 +206,8 @@
     </main>
   </div>
 </div>
+
+{{-- BOOTSTRAP JS --}}
 <script 
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 

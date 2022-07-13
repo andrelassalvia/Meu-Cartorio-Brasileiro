@@ -63,14 +63,7 @@ Route::resource('providers', 'App\Http\Controllers\ProviderController')
 ->middleware(['auth']);
 
 // SERVICE ORDERS
-Route::prefix('orders/')
-    ->middleware(['auth'])
-    ->controller('App\Http\Controllers\Order\OrderListController')
-    ->group(function(){
-        route::get('list/{status}', 'list')->name('orders.list');
-    });
-
-Route::resource('service-orders', 'App\Http\Controllers\Order\ServiceOrderController')
+Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
     ->middleware(['auth']);
 
 // SERVICES TYPES

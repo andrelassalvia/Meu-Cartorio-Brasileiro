@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Order;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ServiceOrder;
 use Illuminate\Support\Carbon;
 
 class ServiceOrderController extends Controller
@@ -13,9 +13,35 @@ class ServiceOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        switch ($request->orderstatus_id) {
+            case 1:
+                $title = 'Ordens em andamento';
+                $orders = ServiceOrder::whereNotIn('orderstatus_id', [7])
+                    ->with(['client', 'serviceType', 'orderStatus', 'provider'])
+                    ->orderBy('updated_at')
+                    ->paginate(15);
+                break;
+
+            case 7:
+                $title = 'Ordens encerradas';
+                $orders = ServiceOrder::where('orderstatus_id', [7])
+                    ->with(['client', 'serviceType', 'orderStatus', 'provider'])
+                    ->orderBy('updated_at')
+                    ->paginate(15);
+                break;
+
+            default:
+                $title = 'Lista de ordens';
+                $orders = ServiceOrder::orderBy('updated_at')->paginate(15);
+                break;
+        }
+
+        return view(
+            'order.listOrders',
+            compact('title', 'orders')
+        );
     }
 
     /**
