@@ -21,6 +21,8 @@ class ClientFactory extends Factory
             'cnh' => $this->faker->boolean(),
             'cpf' => $this->faker->boolean(),
             'digital_certification' => $this->faker->boolean(),
+            'passport' => $this->faker->boolean(),
+            'rg' => $this->faker->boolean(),
             'clientstatus_id' => random_int(1, 4),
             'maritalstatus_id' => random_int(1, 5),
             'occupation_id' => random_int(1, 9),

@@ -1,6 +1,6 @@
 <div class="mb-3 row">
     <label 
-        :for="$colName" 
+        for="{{ $colName }}" 
         class="col-sm-{{$labelSize}} col-form-label"
     > 
         {{ $title }} 
@@ -10,7 +10,9 @@
       <input 
         type="{{ $type }}" 
         class="form-control form-control-sm" 
-        :name="$colName">
+        name="{{ $colName }}"
+        value="{{ old($colName) }}"
+        >
     </div>
 </div>
 

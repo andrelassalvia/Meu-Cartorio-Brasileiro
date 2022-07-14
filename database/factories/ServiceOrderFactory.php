@@ -14,9 +14,9 @@ class ServiceOrderFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' => random_int(2001, 3000),
+            'client_id' => random_int(1, 1000),
             'servicetype_id' => random_int(1, 7),
-            'provider_id' => random_int(3, 1002),
+            'provider_id' => random_int(1, 1000),
             'orderstatus_id' => random_int(1, 7),
             'classification_id' => random_int(1, 5)
         ];

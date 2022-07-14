@@ -19,9 +19,13 @@
       title="Novo cliente"
     />
   </x-slot>
-
-  <form action="" method="get">
+  
+  <form action="{{ route('clients.search') }}" method="get">
     <div class="d-flex">
+
+      {{-- client status --}}
+     
+      <input type="hidden" name="clientstatus_id" value="{{ $clientStatus_id ?? ""}}">
       
       <div class="col-sm-6 mt-3">
         {{-- search for name --}}
@@ -204,10 +208,25 @@
     </tbody>
   </table>
 
-   {{-- PAGINATION --}}
-   <x-tables.pagination
+  {{-- PAGINATION --}}
+  @if (isset($dataForm))
+    <div class="d-flex justify-content-between">
+
+      {{ $clients->appends($dataForm)->links() }}
+      <div>
+        <p class="fw-bold">
+          {{ $clients->appends($dataForm)->firstItem() }} - 
+          <span>{{ $clients->appends($dataForm)->lastItem() }}</span> 
+          <span>de {{ $clients->appends($dataForm)->total() }}</span>
+        </p>
+      </div>
+    </div>
+  @else
+    <x-tables.pagination
       :array="$clients"
     />
+  @endif
+
 </x-cards.card-main>
 
 {{-- Load cities to select --}}

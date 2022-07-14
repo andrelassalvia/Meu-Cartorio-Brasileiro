@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // CLIENTS
+Route::get('clients-search', 'App\Http\Controllers\ClientController@search')
+    ->middleware(['auth'])->name('clients.search');
 Route::resource('clients', 'App\Http\Controllers\ClientController')
     ->middleware(['auth']);
 
