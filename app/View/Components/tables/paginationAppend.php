@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class paginationAppend extends Component
 {
+    public $array;
+    public $dataform;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($array, $dataform)
     {
-        //
+        $this->array = $array;
+        $this->dataform = $dataform;
     }
 
     /**

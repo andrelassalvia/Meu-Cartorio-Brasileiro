@@ -210,17 +210,10 @@
 
   {{-- PAGINATION --}}
   @if (isset($dataForm))
-    <div class="d-flex justify-content-between">
-
-      {{ $clients->appends($dataForm)->links() }}
-      <div>
-        <p class="fw-bold">
-          {{ $clients->appends($dataForm)->firstItem() }} - 
-          <span>{{ $clients->appends($dataForm)->lastItem() }}</span> 
-          <span>de {{ $clients->appends($dataForm)->total() }}</span>
-        </p>
-      </div>
-    </div>
+    <x-tables.pagination-append
+      :array="$clients"
+      :dataform="$dataForm"
+    />
   @else
     <x-tables.pagination
       :array="$clients"
