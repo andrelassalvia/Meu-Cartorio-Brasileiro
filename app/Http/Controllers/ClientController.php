@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\ServiceOrder;
+use App\Models\ServiceType;
 use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -135,6 +136,7 @@ class ClientController extends Controller
     {
         $dataForm = $request->all();
         $clientStatus_id = $request->clientstatus_id;
+        $serviceType_id = $request->servicetype_id;
         $request->boolean('firma_aberta') === true ? $firmaAberta = [true] : $firmaAberta = [true, false];
         $request->boolean('cnh') === true ? $cnh = [true] : $cnh = [true, false];
         $request->boolean('cpf') === true ? $cpf = [true] : $cpf = [true, false];
@@ -168,37 +170,34 @@ class ClientController extends Controller
                 break;
         }
 
-            $clientsSearch = Client::whereIn('clientstatus_id', $clientStatus)
-                ->where('name', 'LIKE', '%'.$request->name.'%')
-                ->where('tel', 'LIKE', '%'.$request->tel.'%')
-                ->where('brazilstate_id', $request->brazilstate_id)
-                ->where('brazilcity_id', $request->brazilcity_id)
-                ->whereIn('firma_aberta', $firmaAberta)
-                ->whereIn('cnh', $cnh)
-                ->whereIn('cpf', $cpf)
-                ->whereIn('digital_certification', $digitalCertification)
-                ->whereIn('passport', $passport)
-                ->where('country_id', $request->country_id)
-                ->where('city_id', $request->city_id)
-                ->orderBy('name');
+        // Find clients with the specific serviceType
+        $orders = ServiceOrder::with('serviceType')
+        ->get()
+        ->filter(function($serviceOrder) use ($serviceType_id){
+            return $serviceOrder->servicetype_id == $serviceType_id;
+        })
+        ->map(function($serviceOrder){
+            return $serviceOrder->client_id;
+        })
+        ->unique();
 
-            
+        $clientsSearch = Client::whereIn('clientstatus_id', $clientStatus)
+            ->where('name', 'LIKE', '%'.$request->name.'%')
+            ->where('tel', 'LIKE', '%'.$request->tel.'%')
+            ->where('brazilstate_id', $request->brazilstate_id)
+            ->where('brazilcity_id', $request->brazilcity_id)
+            ->whereIn('firma_aberta', $firmaAberta)
+            ->whereIn('cnh', $cnh)
+            ->whereIn('cpf', $cpf)
+            ->whereIn('digital_certification', $digitalCertification)
+            ->whereIn('passport', $passport)
+            ->where('country_id', $request->country_id)
+            ->where('city_id', $request->city_id)
+            ->orderBy('name');
                 
-            $ordersSearch = ServiceOrder::where('servicetype_id', $request->servicetype_id)
-                ->get();
-
-                if(!$ordersSearch->isEmpty()){
-
-                    $clientsIds = array();
-                    foreach ($ordersSearch as $key => $value) {
-                        array_push($clientsIds, $value->client_id);
-                    }
-                    $clientsIds = collect($clientsIds)->unique();
-
-                    $clients = $clientsSearch->whereIn('id', $clientsIds)->paginate(10);
-
+            if(!$orders->isEmpty()){
+                    $clients = $clientsSearch->whereIn('id', $orders)->paginate(10);
                 } else {
-
                     $clients = $clientsSearch->paginate(10);
                 }
                         
@@ -206,6 +205,5 @@ class ClientController extends Controller
             'client.listClients', 
             compact('clients', 'title', 'clientStatus_id', 'dataForm')
         );
-
     }
 }
