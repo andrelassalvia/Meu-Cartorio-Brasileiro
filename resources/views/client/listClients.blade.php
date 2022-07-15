@@ -20,7 +20,7 @@
     />
   </x-slot>
   
-  <form action="{{ route('clients.search') }}" method="get">
+  <form action="{{ route('clients.search') }}" method="get" id="form-search">
     <div class="d-flex">
 
       {{-- client status --}}
@@ -29,14 +29,31 @@
       
       <div class="col-sm-6 mt-3">
         {{-- search for name --}}
-          <x-forms.inline-label
+        <div class="mb-3 row">
+          <label 
+              for="name" 
+              class="col-sm-3 col-form-label"
+          > 
+              Nome do cliente
+              <span style="color: red">*</span> 
+          </label>
+          <div class="col-sm-7">
+            <input 
+              type="text" 
+              class="form-control form-control-sm" 
+              name="name"
+              value="{{ $clientName ?? "" }}"
+              >
+          </div>
+        </div>
+          {{-- <x-forms.inline-label
             colName="name"
             title="Nome do cliente"
             colSize="7"
             labelSize="3"
             type="text"
             req=""
-          />
+          /> --}}
 
           {{-- search for fone --}}
           <x-forms.inline-label
@@ -71,7 +88,33 @@
 
       <div class="col-sm-6 mt-3">
         {{-- Search for service type --}}
-        <x-forms.select-foreach
+        <div class="mb-3 row">
+          <label 
+            for="" 
+            class="col-sm-3 col-form-label"
+            >
+            Demanda
+            <span style="color: red">*</span>
+          </label>
+          <div class="col-sm-4">
+            <select name="servicetype_id" id="service-type" class="form-select form-select-sm">
+              <option value="">Selecione</option>
+              @foreach ($serviceTypes as $item)
+                @if (isset($clientDemand))
+                  <option 
+                    value="{{$item->id}}"{{  $item->id == $clientDemand ? 'selected' : ""  }}
+
+                  >
+                    {{$item->name}}
+                  </option>
+                @else
+                 <option value="{{ $item->id }}">{{ $item->name }}</option>   
+                @endif
+              @endforeach
+            </select>
+          </div>
+      </div>
+        {{-- <x-forms.select-foreach
           title="Demanda"
           colName="servicetype_id"
           colSize="4"
@@ -79,7 +122,7 @@
           :array="$serviceTypes"
           :id="'service-type'"
           req=""
-        />
+        /> --}}
 
         {{-- Search for documents --}}
         <div class="search--check mb-3">
@@ -224,5 +267,17 @@
 
 {{-- Load cities to select --}}
 <script type="text/javascript" src="{{asset('js/loadCities.js')}}"></script>
+
+{{-- Reset inputs --}}
+<script>
+  $(function(){
+    $('#reset-button').on('click', function(){
+      $('#form-search input').attr('value', "");
+      // $('select[name="servicetype_id"] option:selected').attr('selected', null);
+      $('#form-search option:selected').attr('selected', null);
+      
+    });
+  });
+</script>
 
 @endsection

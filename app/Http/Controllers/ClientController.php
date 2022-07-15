@@ -135,6 +135,9 @@ class ClientController extends Controller
     public function search(Request $request)
     {
         $dataForm = $request->all();
+        $clientName = $request->name;
+        $clientDemand = $request->servicetype_id;
+        Debugbar::info($clientDemand);
         $clientStatus_id = $request->clientstatus_id;
         $serviceType_id = $request->servicetype_id;
         $request->boolean('firma_aberta') === true ? $firmaAberta = [true] : $firmaAberta = [true, false];
@@ -203,7 +206,14 @@ class ClientController extends Controller
                         
         return view(
             'client.listClients', 
-            compact('clients', 'title', 'clientStatus_id', 'dataForm')
+            compact(
+                'clients', 
+                'title', 
+                'clientStatus_id', 
+                'dataForm', 
+                'clientName', 
+                'clientDemand'
+            )
         );
     }
 }

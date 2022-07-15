@@ -1,5 +1,5 @@
 <div class="search--buttons">
-    <button class="btn btn-sm btn-outline-secondary btn--clear" type="reset">
+    <button class="btn btn-sm btn-outline-secondary btn--clear" type="reset" id="reset-button">
         <i class='bx bx-eraser'></i>
         <span>Limpar</span>
     </button>
