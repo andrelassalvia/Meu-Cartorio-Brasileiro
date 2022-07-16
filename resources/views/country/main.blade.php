@@ -57,6 +57,7 @@
                             labelSize="3"
                             type="text"
                             req=""
+                            reqValue=""
                         />
 
                         <x-forms.inline-label
@@ -66,6 +67,7 @@
                             labelSize="3"
                             type="text"
                             req=""
+                            reqValue=""
                         />
                     </form>
                 </x-cards.card-main>

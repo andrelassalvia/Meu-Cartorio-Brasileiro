@@ -11,7 +11,7 @@
         type="{{ $type }}" 
         class="form-control form-control-sm" 
         name="{{ $colName }}"
-        value="{{ old($colName) }}"
+        value="{{ old($colName) ?? $reqValue }}"
         >
     </div>
 </div>
@@ -23,4 +23,5 @@
     colSize
     type
     req
+    reqValue
     --}}

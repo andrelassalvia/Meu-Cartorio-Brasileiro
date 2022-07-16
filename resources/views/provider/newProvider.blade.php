@@ -22,6 +22,7 @@
         labelSize="2"
         type="text"
         req=""
+        reqValue=""
       />
 
       {{-- CONTACT --}}
@@ -32,6 +33,7 @@
         labelSize="2"
         type="text"
         req=""
+        reqValue=""
       />
 
       {{-- TEL --}}
@@ -42,6 +44,7 @@
         labelSize="2"
         type="tel"
         req="*"
+        reqValue=""
       />
 
       {{-- ZAP --}}
@@ -52,6 +55,7 @@
         labelSize="2"
         type="tel"
         req=""
+        reqValue=""
       />
 
       {{-- EMAIL --}}
@@ -62,6 +66,7 @@
         labelSize="2"
         type="email"
         req=""
+        reqValue=""
       />
 
       {{-- BRAZIL STATE --}}

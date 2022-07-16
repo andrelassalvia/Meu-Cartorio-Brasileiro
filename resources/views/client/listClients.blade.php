@@ -24,38 +24,35 @@
     <div class="d-flex">
 
       {{-- client status --}}
-     
       <input type="hidden" name="clientstatus_id" value="{{ $clientStatus_id ?? ""}}">
       
       <div class="col-sm-6 mt-3">
+
         {{-- search for name --}}
-        <div class="mb-3 row">
-          <label 
-              for="name" 
-              class="col-sm-3 col-form-label"
-          > 
-              Nome do cliente
-              <span style="color: red">*</span> 
-          </label>
-          <div class="col-sm-7">
-            <input 
-              type="text" 
-              class="form-control form-control-sm" 
-              name="name"
-              value="{{ $clientName ?? "" }}"
-              >
-          </div>
-        </div>
-          {{-- <x-forms.inline-label
+        @if (isset($clientName))
+          <x-forms.inline-label
             colName="name"
             title="Nome do cliente"
             colSize="7"
             labelSize="3"
             type="text"
             req=""
-          /> --}}
+            reqValue="{{ $clientName }}" 
+          />
+        @else
+          <x-forms.inline-label
+            colName="name"
+            title="Nome do cliente"
+            colSize="7"
+            labelSize="3"
+            type="text"
+            req=""
+            reqValue="" 
+          />
+        @endif
 
-          {{-- search for fone --}}
+        {{-- search for fone --}}
+        @if (isset($clientTel))
           <x-forms.inline-label
             colName="tel"
             title="Telefone"
@@ -63,9 +60,22 @@
             labelSize="3"
             type="text"
             req=""
+            reqValue="{{ $clientTel }}"
           />
+        @else
+          <x-forms.inline-label
+            colName="tel"
+            title="Telefone"
+            colSize="5"
+            labelSize="3"
+            type="text"
+            req=""
+            reqValue=""
+          />
+        @endif
 
-          {{-- Search for state in Brazil --}}
+        {{-- Search for state in Brazil --}}
+        @if (isset($clientBrazilStateId))
           <x-forms.select-foreach
             title="Estado"
             colName='brazilstate_id'
@@ -74,75 +84,123 @@
             :array="$brazilStates"
             :id="'brazil-state'"
             req=""
+            reqValue="{{ $clientBrazilStateId }}"
           />
-
-          {{-- Search for city in Brazil --}}
-          <x-forms.select
-            title="Cidade"
-            colName="brazilcity_id"
-            :id="'brazil-city'"
+        @else
+          <x-forms.select-foreach
+            title="Estado"
+            colName='brazilstate_id'
             colSize="4"
             labelSize="3"
+            :array="$brazilStates"
+            :id="'brazil-state'"
+            req=""
+            reqValue=""
           />
+        @endif
+          
+        {{-- Search for city in Brazil --}}
+        <x-forms.select
+          title="Cidade"
+          colName="brazilcity_id"
+          :id="'brazil-city'"
+          colSize="4"
+          labelSize="3"
+        />
+
       </div>
 
       <div class="col-sm-6 mt-3">
-        {{-- Search for service type --}}
-        <div class="mb-3 row">
-          <label 
-            for="" 
-            class="col-sm-3 col-form-label"
-            >
-            Demanda
-            <span style="color: red">*</span>
-          </label>
-          <div class="col-sm-4">
-            <select name="servicetype_id" id="service-type" class="form-select form-select-sm">
-              <option value="">Selecione</option>
-              @foreach ($serviceTypes as $item)
-                @if (isset($clientDemand))
-                  <option 
-                    value="{{$item->id}}"{{  $item->id == $clientDemand ? 'selected' : ""  }}
 
-                  >
-                    {{$item->name}}
-                  </option>
-                @else
-                 <option value="{{ $item->id }}">{{ $item->name }}</option>   
-                @endif
-              @endforeach
-            </select>
-          </div>
-      </div>
-        {{-- <x-forms.select-foreach
-          title="Demanda"
-          colName="servicetype_id"
-          colSize="4"
-          labelSize="3"
-          :array="$serviceTypes"
-          :id="'service-type'"
-          req=""
-        /> --}}
+        {{-- Search for service type --}}
+        @if (isset($clientDemand))
+          <x-forms.select-foreach
+            title="Demanda"
+            colName="servicetype_id"
+            colSize="4"
+            labelSize="3"
+            :array="$serviceTypes"
+            :id="'service-type'"
+            req=""
+            reqValue="{{ $clientDemand }}"
+          />
+        @else
+          <x-forms.select-foreach
+            title="Demanda"
+            colName="servicetype_id"
+            colSize="4"
+            labelSize="3"
+            :array="$serviceTypes"
+            :id="'service-type'"
+            req=""
+            reqValue=""
+          />
+        @endif
 
         {{-- Search for documents --}}
         <div class="search--check mb-3">
-          <x-forms.check-grid title="Firma aberta" colName="firma_aberta"/>
-          <x-forms.check-grid title="CNH" colName="cnh"/>
-          <x-forms.check-grid title="CPF" colName="cpf"/>
-          <x-forms.check-grid title="Certificado" colName="digital_certification"/>
-          <x-forms.check-grid title="Passaporte" colName="passport"/>
+
+          {{-- firma aberta --}}
+          @if (isset($clientFirma) and $clientFirma == 1)
+            <x-forms.checked-grid title="Firma aberta" colName="firma_aberta"/>
+          @else
+            <x-forms.check-grid title="Firma aberta" colName="firma_aberta"/>
+          @endif
+
+          {{-- CNH --}}
+          @if (isset($clientCnh) and $clientCnh == 1)
+            <x-forms.checked-grid title="CNH" colName="cnh"/>
+          @else
+            <x-forms.check-grid title="CNH" colName="cnh"/>
+          @endif
+
+          {{-- CPF --}}
+          @if (isset($clientCpf) and $clientCpf == 1)
+            <x-forms.checked-grid title="CPF" colName="cpf"/>
+          @else
+            <x-forms.check-grid title="CPF" colName="cpf"/>
+          @endif
+
+          {{-- Digital Certification --}}
+          @if (isset($clientDigitalCertification) and $clientDigitalCertification == 1)
+            <x-forms.checked-grid title="Certificação" colName="digital_certification"/>
+          @else
+            <x-forms.check-grid title="Certificação" colName="digital_certification"/>
+          @endif
+
+          {{-- Passport --}}
+          @if (isset($clientPassport) and $clientPassport == 1)
+            <x-forms.checked-grid title="Passaporte" colName="passport"/>
+          @else
+            <x-forms.check-grid title="Passaporte" colName="passport"/>
+          @endif
+   
         </div>
 
         {{-- Country --}}
-        <x-forms.select-foreach
-          title="País"
-          colName='country_id'
-          colSize="4"
-          labelSize="3"
-          :array="$countries"
-          :id="'country'"
-          req=""
-        />
+        @if (isset($clientCountry))
+          <x-forms.select-foreach
+            title="País"
+            colName='country_id'
+            colSize="4"
+            labelSize="3"
+            :array="$countries"
+            :id="'country'"
+            req=""
+            reqValue="{{ $clientCountry }}"
+          />
+        @else
+          <x-forms.select-foreach
+            title="País"
+            colName='country_id'
+            colSize="4"
+            labelSize="3"
+            :array="$countries"
+            :id="'country'"
+            req=""
+            reqValue=""
+          />
+        @endif
 
         {{-- Search form city --}}
         <x-forms.select
@@ -152,6 +210,7 @@
           colSize="4"
           labelSize="3"
         />
+
       </div>
       
     </div>
@@ -269,15 +328,6 @@
 <script type="text/javascript" src="{{asset('js/loadCities.js')}}"></script>
 
 {{-- Reset inputs --}}
-<script>
-  $(function(){
-    $('#reset-button').on('click', function(){
-      $('#form-search input').attr('value', "");
-      // $('select[name="servicetype_id"] option:selected').attr('selected', null);
-      $('#form-search option:selected').attr('selected', null);
-      
-    });
-  });
-</script>
+<script type="text/javascript" src="{{ asset('js/resetInputs.js') }}"></script>
 
 @endsection

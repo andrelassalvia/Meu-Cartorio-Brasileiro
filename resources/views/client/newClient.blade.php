@@ -31,6 +31,7 @@
       labelSize="2"
       type="text"
       req="*"
+      reqValue=""
     />
 
     {{-- TELEPHONE --}}
@@ -49,6 +50,7 @@
       labelSize="2"
       type="email"
       req=""
+      reqValue=""
     />
 
     {{-- BIRTH DATE --}}
@@ -59,6 +61,7 @@
       labelSize="2"
       type="date"
       req=""
+      reqValue=""
     />
 
     {{-- CHECK FIRMA --}}
@@ -100,6 +103,7 @@
       :array="$brazilStates"
       :id="'brazil-state'"
       req=""
+      reqValue=""
     />
 
     {{-- SELECT BRAZIL CITY --}}
@@ -120,6 +124,7 @@
       :array="$countries"
       :id="'country'"
       req=""
+      reqValue=""
     />
 
     {{-- SELECT CITY  --}}
@@ -140,6 +145,7 @@
       :id="'marital-status'"
       :array="$maritalStatus"
       req=""
+      reqValue=""
     />
 
     {{-- SELECT OCCUPATION --}}
@@ -151,6 +157,7 @@
       :id="'occupation'"
       :array="$occupations"
       req=""
+      reqValue=""
     />
 
     {{-- COMMENT --}}

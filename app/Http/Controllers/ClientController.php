@@ -135,18 +135,35 @@ class ClientController extends Controller
     public function search(Request $request)
     {
         $dataForm = $request->all();
-        $clientName = $request->name;
-        $clientDemand = $request->servicetype_id;
-        Debugbar::info($clientDemand);
-        $clientStatus_id = $request->clientstatus_id;
-        $serviceType_id = $request->servicetype_id;
-        $request->boolean('firma_aberta') === true ? $firmaAberta = [true] : $firmaAberta = [true, false];
-        $request->boolean('cnh') === true ? $cnh = [true] : $cnh = [true, false];
-        $request->boolean('cpf') === true ? $cpf = [true] : $cpf = [true, false];
-        $request->boolean('digital_certification') === true ? $digitalCertification = [true] : $digitalCertification = [true, false];
-        $request->boolean('passport') === true ? $passport = [true] : $passport = [true, false];
 
-        switch ($request->clientstatus_id) {
+        /**
+         * set variables with request values to be retrieved when an search request is loaded
+         * and we need keep those informations on the reloaded page 
+         */ 
+        $clientStatusId = $request->clientstatus_id;
+        $clientName = $request->name;
+        $clientTel = $request->tel;
+        $clientBrazilStateId = $request->brazilstate_id;
+        $clientBrazilCityId = $request->brazilcity_id;
+        $clientDemand = $request->servicetype_id;
+        $clientCountry = $request->country_id;
+        $clientCity = $request->city_id;
+
+        /**
+         * boolean requests needs two different variables. One to be used in where statement and
+         * other to keep search request information when the page is reloaded after a search request
+         */
+        $request->boolean('firma_aberta') === true ? list($firmaAberta, $clientFirma) = array([true], 1) : list($firmaAberta, $clientFirma) = array([true, false], 0);
+        $request->boolean('cnh') === true ? list($cnh, $clientCnh) = array([true], 1) : list($cnh, $clientCnh) = array([true, false], 0);
+        $request->boolean('cpf') === true ? list($cpf, $clientCpf) = array([true], 1) : list($cpf, $clientCpf) = array([true, false], 0);
+        $request->boolean('digital_certification') === true ? list($digitalCertification, $clientDigitalCertification) = array([true], 1) : list($digitalCertification, $clientDigitalCertification) = array([true, false], 0);
+        $request->boolean('passport') === true ? list($passport, $clientPassport) = array([true], 1) : list($passport, $clientPassport) = array([true, false], 0);
+
+        /**
+         * switch to define the title of differents lists (potential, all, etc) and define its
+         * client status to allow status be reloaded after a search request
+         */
+        switch ($clientStatusId) {
             case 1:
                 $title = 'Clientes potenciais';
                 $clientStatus = [1];
@@ -176,26 +193,27 @@ class ClientController extends Controller
         // Find clients with the specific serviceType
         $orders = ServiceOrder::with('serviceType')
         ->get()
-        ->filter(function($serviceOrder) use ($serviceType_id){
-            return $serviceOrder->servicetype_id == $serviceType_id;
+        ->filter(function($serviceOrder) use ($clientDemand){
+            return $serviceOrder->servicetype_id == $clientDemand;
         })
         ->map(function($serviceOrder){
             return $serviceOrder->client_id;
         })
         ->unique();
 
+        // where statements to be shown in search request
         $clientsSearch = Client::whereIn('clientstatus_id', $clientStatus)
-            ->where('name', 'LIKE', '%'.$request->name.'%')
-            ->where('tel', 'LIKE', '%'.$request->tel.'%')
-            ->where('brazilstate_id', $request->brazilstate_id)
-            ->where('brazilcity_id', $request->brazilcity_id)
+            ->where('name', 'LIKE', '%'.$clientName.'%')
+            ->where('tel', 'LIKE', '%'.$clientTel.'%')
+            ->where('brazilstate_id', $clientBrazilStateId)
+            ->where('brazilcity_id', $clientBrazilCityId)
             ->whereIn('firma_aberta', $firmaAberta)
             ->whereIn('cnh', $cnh)
             ->whereIn('cpf', $cpf)
             ->whereIn('digital_certification', $digitalCertification)
             ->whereIn('passport', $passport)
-            ->where('country_id', $request->country_id)
-            ->where('city_id', $request->city_id)
+            ->where('country_id', $clientCountry)
+            ->where('city_id', $clientCity)
             ->orderBy('name');
                 
             if(!$orders->isEmpty()){
@@ -209,10 +227,20 @@ class ClientController extends Controller
             compact(
                 'clients', 
                 'title', 
-                'clientStatus_id', 
+                'clientStatusId', 
                 'dataForm', 
                 'clientName', 
-                'clientDemand'
+                'clientDemand',
+                'clientTel',
+                'clientBrazilStateId',
+                'clientBrazilCityId',
+                'clientFirma',
+                'clientCnh',
+                'clientCpf',
+                'clientDigitalCertification',
+                'clientPassport',
+                'clientCountry',
+                'clientCity'
             )
         );
     }

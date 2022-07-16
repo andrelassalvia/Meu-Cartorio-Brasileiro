@@ -13,6 +13,7 @@ class selectForeach extends Component
     public $colSize;
     public $labelSize;
     public $req;
+    public $reqValue;
     /**
      * Create a new component instance.
      *
@@ -25,7 +26,8 @@ class selectForeach extends Component
         $id, 
         $colSize, 
         $labelSize,
-        $req
+        $req,
+        $reqValue
     )
     {
         $this->title = $title;
@@ -35,6 +37,7 @@ class selectForeach extends Component
         $this->colSize = $colSize;
         $this->labelSize = $labelSize;
         $this->req = $req;
+        $this->reqValue = $reqValue;
     }
 
     /**

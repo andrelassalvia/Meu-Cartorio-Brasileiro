@@ -1,5 +1,4 @@
 <div class="d-flex justify-content-between">
-
     {{ $array->appends($dataform)->links() }}
     <div>
       <p class="fw-bold">
@@ -8,7 +7,7 @@
         <span>de {{ $array->appends($dataform)->total() }}</span>
       </p>
     </div>
-  </div>
+</div>
 
   {{-- 
     array

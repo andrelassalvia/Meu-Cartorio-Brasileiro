@@ -66,6 +66,7 @@
         labelSize="3"
         type="text"
         req=""
+        reqValue=""
       />
       </div>
     </div>

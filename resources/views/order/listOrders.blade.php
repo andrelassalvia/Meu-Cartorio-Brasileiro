@@ -32,6 +32,7 @@
               labelSize="3"
               type="text"
               req=""
+              reqValue=""
             />
   
             {{-- search for fone --}}
@@ -42,6 +43,7 @@
               labelSize="3"
               type="text"
               req=""
+              reqValue=""
             />
   
             {{-- Search for state in Brazil --}}
@@ -97,6 +99,7 @@
             labelSize="3"
             type="text"
             req=""
+            reqValue=""
           />
 
           {{-- search for provider contact --}}
@@ -107,6 +110,7 @@
             labelSize="3"
             type="text"
             req=""
+            reqValue=""
           />
         </div>
         
