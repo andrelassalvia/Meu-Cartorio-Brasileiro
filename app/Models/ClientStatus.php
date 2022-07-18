@@ -21,12 +21,12 @@ class ClientStatus extends Model
     /**
      * table associated with the model
      */
-    protected $table = 'clients_status';
+    protected $table = 'client_statuses';
 
     // ======= RELATIONSHIPS ========= //
 
     public function clients()
     {
-        return $this->hasMany(Client::class, 'clientstatus_id', 'id');
+        return $this->hasMany(Client::class);
     }
 }

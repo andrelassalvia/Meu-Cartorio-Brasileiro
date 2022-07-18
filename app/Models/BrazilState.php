@@ -27,16 +27,16 @@ class BrazilState extends Model
     // ======= RELATIONSHIPS ========= //
     public function clients()
     {
-        return $this->hasMany(Client::class, 'brazilstate_id', 'id');
+        return $this->hasMany(Client::class);
     }
 
     public function providers()
     {
-        return $this->hasMany(Provider::class, 'brazilstate_id', 'id');
+        return $this->hasMany(Provider::class);
     }
 
     public function brazilCities()
     {
-        return $this->hasMany(BrazilCity::class, 'brazilstate_id', 'id');
+        return $this->hasMany(BrazilCity::class);
     }
 }

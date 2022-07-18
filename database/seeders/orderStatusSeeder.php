@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\OrderStatus;
 use Illuminate\Database\Seeder;
 
-class orderStatusSeeder extends Seeder
+class OrderStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.

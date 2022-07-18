@@ -15,9 +15,9 @@ class ServiceOrderFactory extends Factory
     {
         return [
             'client_id' => random_int(1, 1000),
-            'servicetype_id' => random_int(1, 7),
+            'service_type_id' => random_int(1, 7),
             'provider_id' => random_int(1, 1000),
-            'orderstatus_id' => random_int(1, 7),
+            'order_status_id' => random_int(1, 7),
             'classification_id' => random_int(1, 5)
         ];
     }

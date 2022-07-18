@@ -28,7 +28,7 @@ class Comment extends Model
     // ======= RELATIONSHIPS ========= //
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'id');
+        return $this->belongsTo(Client::class);
     }
 
     // ===== METHODS ===== //

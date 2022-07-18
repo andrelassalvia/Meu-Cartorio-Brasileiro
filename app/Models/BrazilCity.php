@@ -16,7 +16,7 @@ class BrazilCity extends Model
      */
     protected $fillable = [
         'name',
-        'brazilstate_id'
+        'brazil_state_id'
     ];
 
     /**
@@ -28,16 +28,16 @@ class BrazilCity extends Model
     
     public function clients()
     {
-        return $this->hasMany(Client::class, 'brazilcity_id', 'id');
+        return $this->hasMany(Client::class);
     }
 
     public function brazilState()
     {
-        return $this->belongsTo(BrazilState::class, 'brazilstate_id', 'id');
+        return $this->belongsTo(BrazilState::class);
     }
 
     public function providers()
     {
-        return $this->hasMany(Provider::class, 'brazilCity', 'id');
+        return $this->hasMany(Provider::class);
     }
 }

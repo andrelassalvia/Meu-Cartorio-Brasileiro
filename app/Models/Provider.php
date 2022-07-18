@@ -20,8 +20,8 @@ class Provider extends Model
         'tel',
         'email',
         'zap',
-        'brazilstate_id',
-        'brazilcity_id'
+        'brazil_state_id',
+        'brazil_city_id'
     ];
 
     /**
@@ -32,16 +32,16 @@ class Provider extends Model
     // ======= RELATIONSHIPS ========= //
     public function serviceOrders()
     {
-        return $this->hasMany(ServiceOrder::class, 'provider_id', 'id');
+        return $this->hasMany(ServiceOrder::class);
     }
 
     public function brazilState()
     {
-        return $this->belongsTo(BrazilState::class, 'brazilstate_id', 'id');
+        return $this->belongsTo(BrazilState::class);
     }
 
     public function brazilCity()
     {
-        return $this->belongsTo(BrazilCity::class, 'brazilcity_id', 'id');
+        return $this->belongsTo(BrazilCity::class);
     }
 }

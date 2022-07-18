@@ -21,11 +21,11 @@ class UserType extends Model
     /**
      * table associated with the model
      */
-    protected $table = 'users_types';
+    protected $table = 'user_types';
 
     // ======= RELATIONSHIPS ========= //
     public function users()
     {
-        return $this->hasMany(User::class, 'usertype_id', 'id');
+        return $this->hasMany(User::class);
     }
 }

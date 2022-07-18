@@ -21,11 +21,11 @@ class OrderStatus extends Model
     /**
      * table associated with the model
      */
-    protected $table = 'orders_status';
+    protected $table = 'order_statuses';
 
     // ======= RELATIONSHIPS ========= //
     public function serviceOrders()
     {
-        return $this->hasMany(ServiceOrder::class, 'orderstatus_id', 'id');
+        return $this->hasMany(ServiceOrder::class);
     }
 }

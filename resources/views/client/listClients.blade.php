@@ -24,7 +24,7 @@
     <div class="d-flex">
 
       {{-- client status --}}
-      <input type="hidden" name="clientstatus_id" value="{{ $clientStatus_id ?? ""}}">
+      <input type="hidden" name="client_status_id" value="{{ $clientStatus_id ?? ""}}">
       
       <div class="col-sm-6 mt-3">
 

@@ -27,12 +27,12 @@ class Country extends Model
 
     public function clients()
     {
-        return $this->hasMany(Clients::class, 'country_id', 'id');
+        return $this->hasMany(Clients::class);
     }
 
     public function cities()
     {
-        return $this->hasMany(City::class, 'country_id', 'id');
+        return $this->hasMany(City::class);
     }
 
 }

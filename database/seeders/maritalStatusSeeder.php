@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\MaritalStatus;
 use Illuminate\Database\Seeder;
 
-class maritalStatusSeeder extends Seeder
+class MaritalStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.

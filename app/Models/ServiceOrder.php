@@ -14,9 +14,9 @@ class ServiceOrder extends Model
 
     protected $fillable = [
         'client_id',
-        'servicetype_id',
+        'service_type_id',
         'provider_id',
-        'orderstatus_id',
+        'order_status_id',
         'classification_id',
         'finish_date',
         'income',
@@ -26,9 +26,9 @@ class ServiceOrder extends Model
 
     protected $casts = [
         'client_id' => 'integer',
-        'servicetype_id' => 'integer',
+        'service_type_id' => 'integer',
         'provider_id' => 'integer',
-        'orderstatus_id' => 'integer',
+        'order_status_id' => 'integer',
         'classification_id' => 'integer',
         'finish_date' => 'date',
         'income' => 'float',
@@ -49,26 +49,26 @@ class ServiceOrder extends Model
 
     public function serviceType()
     {
-        return $this->belongsTo(ServiceType::class, 'servicetype_id', 'id');
+        return $this->belongsTo(ServiceType::class);
     }
 
     public function orderStatus()
     {
-        return $this->belongsTo(OrderStatus::class, 'orderstatus_id', 'id');
+        return $this->belongsTo(OrderStatus::class);
     }
 
     public function provider()
     {
-        return $this->belongsTo(Provider::class, 'provider_id', 'id');
+        return $this->belongsTo(Provider::class);
     }
 
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'id');
+        return $this->belongsTo(Client::class);
     }
 
     public function classification()
     {
-        return $this->belongsTo(Classification::class, 'classification_id', 'id');
+        return $this->belongsTo(Classification::class);
     }
 }

@@ -26,12 +26,12 @@ class Client extends Model
         'digital_certification',
         'rg',
         'passport',
-        'brazilstate_id',
-        'brazilcity_id',
+        'brazil_state_id',
+        'brazil_city_id',
         'country_id',
         'city_id',
-        'clientstatus_id',
-        'maritalstatus_id',
+        'client_status_id',
+        'marital_status_id',
         'occupation_id',
         'rg_file',
         'passport_file',
@@ -48,47 +48,47 @@ class Client extends Model
 
     public function clientStatus()
     {
-        return $this->belongsTo(ClientStatus::class, 'clientstatus_id', 'id');
+        return $this->belongsTo(ClientStatus::class);
     }
 
     public function serviceOrders()
     {
-        return $this->hasMany(ServiceOrder::class, 'client_id', 'id');
+        return $this->hasMany(ServiceOrder::class);
     }
 
     public function brazilState()
     {
-        return $this->belongsTo(BrazilState::class, 'brazilstate_id', 'id');
+        return $this->belongsTo(BrazilState::class);
     }
 
     public function brazilCity()
     {
-        return $this->belongsTo(BrazilCity::class, 'brazilcity_id', 'id');
+        return $this->belongsTo(BrazilCity::class);
     }
 
     public function city()
     {
-        return $this->belongsTo(City::class, 'city_id', 'id');
+        return $this->belongsTo(City::class);
     }
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
+        return $this->belongsTo(Country::class);
     }
 
     public function occupation()
     {
-        return $this->belongsTo(Occupation::class, 'occupation_id', 'id');
+        return $this->belongsTo(Occupation::class);
     }
 
     public function maritalStatus()
     {
-        return $this->belongsTo(MaritalStatus::class, 'maritalstatus_id', 'id');
+        return $this->belongsTo(MaritalStatus::class);
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'client_id', 'id');
+        return $this->hasMany(Comment::class);
     }
 
     // ====== METHODS ===== //

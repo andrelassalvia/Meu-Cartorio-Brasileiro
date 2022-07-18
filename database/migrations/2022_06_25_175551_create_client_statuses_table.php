@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsStatusTable extends Migration
+class CreateClientStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClientsStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients_status', function (Blueprint $table) {
+        Schema::create('client_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateClientsStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients_status');
+        Schema::dropIfExists('client_statuses');
     }
 }

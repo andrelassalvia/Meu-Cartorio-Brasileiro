@@ -23,9 +23,9 @@ class ClientFactory extends Factory
             'digital_certification' => $this->faker->boolean(),
             'passport' => $this->faker->boolean(),
             'rg' => $this->faker->boolean(),
-            'clientstatus_id' => random_int(1, 4),
-            'maritalstatus_id' => random_int(1, 5),
-            'occupation_id' => random_int(1, 9),
+            'client_status_id' => random_int(1, 4),
+            'marital_status_id' => random_int(1, 5),
+            'occupation_id' => random_int(1, 8),
         ];
     }
 }

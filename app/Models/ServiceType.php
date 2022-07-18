@@ -26,6 +26,6 @@ class ServiceType extends Model
     // ======= RELATIONSHIPS ========= //
     public function serviceOrder()
     {
-        return $this->hasMany(ServiceOrder::class, 'servicetype_id', 'id');
+        return $this->hasMany(ServiceOrder::class);
     }
 }

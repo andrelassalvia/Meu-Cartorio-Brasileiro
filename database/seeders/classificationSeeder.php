@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Classification;
 
-class classificationSeeder extends Seeder
+class ClassificationSeeder extends Seeder
 {
     /**
      * Run the database seeds.

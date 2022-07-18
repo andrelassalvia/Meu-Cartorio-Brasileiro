@@ -21,11 +21,11 @@ class MaritalStatus extends Model
     /**
      * table associated with the model
      */
-    protected $table = 'marital_status';
+    protected $table = 'marital_statuses';
 
     // ======= RELATIONSHIPS ========= //
     public function clients()
     {
-        return $this->hasMany(Client::class, 'maritalstatus_id', 'id');
+        return $this->hasMany(Client::class);
     }
 }

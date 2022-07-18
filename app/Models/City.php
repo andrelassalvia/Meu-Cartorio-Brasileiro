@@ -27,12 +27,12 @@ class City extends Model
     // ======= RELATIONSHIPS ========= //
     public function clients()
     {
-        return $this->hasMany(Client::class, 'city_id', 'id');
+        return $this->hasMany(Client::class);
     }
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
+        return $this->belongsTo(Country::class);
     }
 
 }

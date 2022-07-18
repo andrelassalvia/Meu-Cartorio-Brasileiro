@@ -26,6 +26,6 @@ class Classification extends Model
     // ======= RELATIONSHIPS ========= //
     public function serviceOrders()
     {
-        return $this->hasMany(ServiceOrder::class, 'classification_id', 'id');
+        return $this->hasMany(ServiceOrder::class);
     }
 }

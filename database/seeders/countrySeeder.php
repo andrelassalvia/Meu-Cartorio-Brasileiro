@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Country;
 
-class countrySeeder extends Seeder
+class CountrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
