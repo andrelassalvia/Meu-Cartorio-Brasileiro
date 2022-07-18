@@ -49,7 +49,7 @@
     {{-- SERVICE TYPE --}}
     <x-forms.select-foreach
       title="Demanda"
-      colName="servicetype_id"
+      colName="service_type_id"
       :array="$serviceTypes"
       :id="'service-type'"
       colSize="2"

@@ -19,9 +19,9 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $clientStatus_id = $request->clientstatus_id;
+        $clientStatus_id = $request->client_status_id;
 
-        switch ($request->clientstatus_id) {
+        switch ($request->client_status_id) {
             case 1:
                 $title = 'Clientes potenciais';
                 break;
@@ -43,8 +43,8 @@ class ClientController extends Controller
                 break;
         }
 
-            if($request->clientstatus_id != null){
-                $clients = Client::where('clientstatus_id', $request->clientstatus_id)
+            if($request->client_status_id != null){
+                $clients = Client::where('client_status_id', $request->client_status_id)
                     ->orderBy('updated_at')
                     ->paginate(15);
             } else{
@@ -140,12 +140,12 @@ class ClientController extends Controller
          * set variables with request values to be retrieved when an search request is loaded
          * and we need keep those informations on the reloaded page 
          */ 
-        $clientStatusId = $request->clientstatus_id;
+        $clientStatus_id = $request->client_status_id;
         $clientName = $request->name;
         $clientTel = $request->tel;
-        $clientBrazilStateId = $request->brazilstate_id;
-        $clientBrazilCityId = $request->brazilcity_id;
-        $clientDemand = $request->servicetype_id;
+        $clientBrazilStateId = $request->brazil_state_id;
+        $clientBrazilCityId = $request->brazil_city_id;
+        $clientDemand = $request->service_type_id;
         $clientCountry = $request->country_id;
         $clientCity = $request->city_id;
 
@@ -163,7 +163,7 @@ class ClientController extends Controller
          * switch to define the title of differents lists (potential, all, etc) and define its
          * client status to allow status be reloaded after a search request
          */
-        switch ($clientStatusId) {
+        switch ($clientStatus_id) {
             case 1:
                 $title = 'Clientes potenciais';
                 $clientStatus = [1];
@@ -194,7 +194,7 @@ class ClientController extends Controller
         $orders = ServiceOrder::with('serviceType')
         ->get()
         ->filter(function($serviceOrder) use ($clientDemand){
-            return $serviceOrder->servicetype_id == $clientDemand;
+            return $serviceOrder->service_type_id == $clientDemand;
         })
         ->map(function($serviceOrder){
             return $serviceOrder->client_id;
@@ -202,11 +202,11 @@ class ClientController extends Controller
         ->unique();
 
         // where statements to be shown in search request
-        $clientsSearch = Client::whereIn('clientstatus_id', $clientStatus)
+        $clientsSearch = Client::whereIn('client_status_id', $clientStatus)
             ->where('name', 'LIKE', '%'.$clientName.'%')
             ->where('tel', 'LIKE', '%'.$clientTel.'%')
-            ->where('brazilstate_id', $clientBrazilStateId)
-            ->where('brazilcity_id', $clientBrazilCityId)
+            ->where('brazil_state_id', $clientBrazilStateId)
+            ->where('brazil_city_id', $clientBrazilCityId)
             ->whereIn('firma_aberta', $firmaAberta)
             ->whereIn('cnh', $cnh)
             ->whereIn('cpf', $cpf)
@@ -227,7 +227,7 @@ class ClientController extends Controller
             compact(
                 'clients', 
                 'title', 
-                'clientStatusId', 
+                'clientStatus_id', 
                 'dataForm', 
                 'clientName', 
                 'clientDemand',

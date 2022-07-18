@@ -78,7 +78,7 @@
         @if (isset($clientBrazilStateId))
           <x-forms.select-foreach
             title="Estado"
-            colName='brazilstate_id'
+            colName='brazil_state_id'
             colSize="4"
             labelSize="3"
             :array="$brazilStates"
@@ -89,7 +89,7 @@
         @else
           <x-forms.select-foreach
             title="Estado"
-            colName='brazilstate_id'
+            colName='brazil_state_id'
             colSize="4"
             labelSize="3"
             :array="$brazilStates"
@@ -102,7 +102,7 @@
         {{-- Search for city in Brazil --}}
         <x-forms.select
           title="Cidade"
-          colName="brazilcity_id"
+          colName="brazil_city_id"
           :id="'brazil-city'"
           colSize="4"
           labelSize="3"
@@ -116,7 +116,7 @@
         @if (isset($clientDemand))
           <x-forms.select-foreach
             title="Demanda"
-            colName="servicetype_id"
+            colName="service_type_id"
             colSize="4"
             labelSize="3"
             :array="$serviceTypes"
@@ -127,7 +127,7 @@
         @else
           <x-forms.select-foreach
             title="Demanda"
-            colName="servicetype_id"
+            colName="service_type_id"
             colSize="4"
             labelSize="3"
             :array="$serviceTypes"

@@ -49,7 +49,7 @@
             {{-- Search for state in Brazil --}}
             <x-forms.select-foreach
               title="Estado"
-              colName='brazilstate_id'
+              colName='brazil_state_id'
               colSize="4"
               labelSize="3"
               :array="$brazilStates"
@@ -60,7 +60,7 @@
             {{-- Search for city in Brazil --}}
             <x-forms.select
               title="Cidade"
-              colName="brazilcity_id"
+              colName="brazil_city_id"
               :id="'brazil-city'"
               colSize="4"
               labelSize="3"
@@ -72,7 +72,7 @@
           {{-- Search for service type --}}
           <x-forms.select-foreach
             title="Demanda"
-            colName="servicetype_id"
+            colName="service_type_id"
             colSize="4"
             labelSize="3"
             :array="$serviceTypes"
@@ -83,7 +83,7 @@
           {{-- Status OS --}}
           <x-forms.select-foreach
             title="Status da ordem"
-            colName='orderstatus_id'
+            colName='order_status_id'
             colSize="4"
             labelSize="3"
             :array="$orderStatus"

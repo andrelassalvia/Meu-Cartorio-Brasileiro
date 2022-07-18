@@ -72,7 +72,7 @@
       {{-- BRAZIL STATE --}}
       <x-forms.select-foreach
         title="Estado"
-        colName='brazilstate_id'
+        colName='brazil_state_id'
         colSize="2"
         labelSize="2"
         :array="$brazilStates"
@@ -83,7 +83,7 @@
       {{-- BRAZIL CITY --}}
       <x-forms.select
       title="Cidade"
-      colName="brazilcity_id"
+      colName="brazil_city_id"
       colSize="2"
       labelSize="2"
       :id="'brazil-city'"

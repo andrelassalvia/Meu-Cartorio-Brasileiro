@@ -41,7 +41,7 @@
 
               {{-- Potential clients --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="clientstatus_id" value="1">
+                <input type="hidden" name="client_status_id" value="1">
                 <button
                   type="submit"
                   class="dropdown-item" 
@@ -54,7 +54,7 @@
 
               {{-- Clients with orders running --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="clientstatus_id" value="3">
+                <input type="hidden" name="client_status_id" value="3">
                 <button
                   type="submit"
                   class="dropdown-item" 
@@ -67,7 +67,7 @@
               
               {{-- Clients with finished orders --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="clientstatus_id" value="4">
+                <input type="hidden" name="client_status_id" value="4">
                 <button
                   type="submit"
                   class="dropdown-item" 
@@ -80,7 +80,7 @@
               
               {{-- Inactive Clients  --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="clientstatus_id" value="2">
+                <input type="hidden" name="client_status_id" value="2">
                 <button
                   type="submit"
                   class="dropdown-item" 
@@ -93,7 +93,7 @@
 
               {{-- All Clients  --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="clientstatus_id" value="">
+                <input type="hidden" name="client_status_id" value="">
                 <button
                   type="submit"
                   class="dropdown-item" 
@@ -122,7 +122,7 @@
 
               {{-- Finished Orders --}}
               <form action="{{ route('service-orders.index') }}" method="GET">
-                <input type="hidden" name="orderstatus_id" value="7">
+                <input type="hidden" name="order_status_id" value="7">
                 <button 
                   type="submit"
                   class="dropdown-item"
@@ -135,7 +135,7 @@
               
               {{-- Orders Running --}}
               <form action="{{ route('service-orders.index') }}" method="GET">
-                <input type="hidden" name="orderstatus_id" value="1">
+                <input type="hidden" name="order_status_id" value="1">
                 <button 
                   type="submit"
                   class="dropdown-item"
