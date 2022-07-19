@@ -12,6 +12,10 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class ClientController extends Controller
 {
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,37 +24,36 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $clientStatus_id = $request->client_status_id;
+        $clientStatus_id = explode(",", $clientStatus_id);
 
         switch ($request->client_status_id) {
-            case 1:
-                $title = 'Clientes potenciais';
+            case "1,2,3,4":
+                $title = 'Todos os clientes';
                 break;
 
-            case 2:
+            case "2":
                 $title = 'Clientes inativos';
                 break;
 
-            case 3:
+            case "3":
                 $title = 'Clientes com ordens';
                 break;
 
-            case 4:
+            case "4":
                 $title = 'Clientes com ordens encerradas';
                 break;
 
             default:
-                $title = 'Todos os clientes';
+                $title = 'Clientes potenciais';
                 break;
         }
 
-            if($request->client_status_id != null){
-                $clients = Client::where('client_status_id', $request->client_status_id)
+        $clients = Client::whereIn('client_status_id', $clientStatus_id)
                     ->orderBy('updated_at')
                     ->paginate(15);
-            } else{
-                $clients = Client::orderBy('updated_at')->paginate(15);
-            }
-        
+
+        $clientStatus_id = implode(",", $clientStatus_id);
+
         return view(
             'client.listClients', 
             compact('clients', 'title', 'clientStatus_id')
@@ -130,118 +133,5 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
-    }
-    
-    public function search(Request $request)
-    {
-        $dataForm = $request->all();
-
-        /**
-         * set variables with request values to be retrieved when an search request is loaded
-         * and we need keep those informations on the reloaded page 
-         */ 
-        $clientStatus_id = $request->client_status_id;
-        $clientName = $request->name;
-        $clientTel = $request->tel;
-        $clientBrazilStateId = $request->brazil_state_id;
-        $clientBrazilCityId = $request->brazil_city_id;
-        $clientDemand = $request->service_type_id;
-        $clientCountry = $request->country_id;
-        $clientCity = $request->city_id;
-
-        /**
-         * boolean requests needs two different variables. One to be used in where statement and
-         * other to keep search request information when the page is reloaded after a search request
-         */
-        $request->boolean('firma_aberta') === true ? list($firmaAberta, $clientFirma) = array([true], 1) : list($firmaAberta, $clientFirma) = array([true, false], 0);
-        $request->boolean('cnh') === true ? list($cnh, $clientCnh) = array([true], 1) : list($cnh, $clientCnh) = array([true, false], 0);
-        $request->boolean('cpf') === true ? list($cpf, $clientCpf) = array([true], 1) : list($cpf, $clientCpf) = array([true, false], 0);
-        $request->boolean('digital_certification') === true ? list($digitalCertification, $clientDigitalCertification) = array([true], 1) : list($digitalCertification, $clientDigitalCertification) = array([true, false], 0);
-        $request->boolean('passport') === true ? list($passport, $clientPassport) = array([true], 1) : list($passport, $clientPassport) = array([true, false], 0);
-
-        /**
-         * switch to define the title of differents lists (potential, all, etc) and define its
-         * client status to allow status be reloaded after a search request
-         */
-        switch ($clientStatus_id) {
-            case 1:
-                $title = 'Clientes potenciais';
-                $clientStatus = [1];
-                break;
-
-            case 2:
-                $title = 'Clientes inativos';
-                $clientStatus = [2];
-                break;
-
-            case 3:
-                $title = 'Clientes com ordens';
-                $clientStatus = [3];
-                break;
-
-            case 4:
-                $title = 'Clientes com ordens encerradas';
-                $clientStatus = [4];
-                break;
-
-            default:
-                $title = 'Todos os clientes';
-                $clientStatus = [1, 2, 3, 4];
-                break;
-        }
-
-        // Find clients with the specific serviceType
-        $orders = ServiceOrder::with('serviceType')
-        ->get()
-        ->filter(function($serviceOrder) use ($clientDemand){
-            return $serviceOrder->service_type_id == $clientDemand;
-        })
-        ->map(function($serviceOrder){
-            return $serviceOrder->client_id;
-        })
-        ->unique();
-
-        // where statements to be shown in search request
-        $clientsSearch = Client::whereIn('client_status_id', $clientStatus)
-            ->where('name', 'LIKE', '%'.$clientName.'%')
-            ->where('tel', 'LIKE', '%'.$clientTel.'%')
-            ->where('brazil_state_id', $clientBrazilStateId)
-            ->where('brazil_city_id', $clientBrazilCityId)
-            ->whereIn('firma_aberta', $firmaAberta)
-            ->whereIn('cnh', $cnh)
-            ->whereIn('cpf', $cpf)
-            ->whereIn('digital_certification', $digitalCertification)
-            ->whereIn('passport', $passport)
-            ->where('country_id', $clientCountry)
-            ->where('city_id', $clientCity)
-            ->orderBy('name');
-                
-            if(!$orders->isEmpty()){
-                    $clients = $clientsSearch->whereIn('id', $orders)->paginate(10);
-                } else {
-                    $clients = $clientsSearch->paginate(10);
-                }
-                        
-        return view(
-            'client.listClients', 
-            compact(
-                'clients', 
-                'title', 
-                'clientStatus_id', 
-                'dataForm', 
-                'clientName', 
-                'clientDemand',
-                'clientTel',
-                'clientBrazilStateId',
-                'clientBrazilCityId',
-                'clientFirma',
-                'clientCnh',
-                'clientCpf',
-                'clientDigitalCertification',
-                'clientPassport',
-                'clientCountry',
-                'clientCity'
-            )
-        );
     }
 }

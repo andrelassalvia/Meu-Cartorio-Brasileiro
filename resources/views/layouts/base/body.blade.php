@@ -93,7 +93,7 @@
 
               {{-- All Clients  --}}
               <form action="{{ route('clients.index') }}" method="get">
-                <input type="hidden" name="client_status_id" value="">
+                <input type="hidden" name="client_status_id" value="1,2,3,4">
                 <button
                   type="submit"
                   class="dropdown-item" 
