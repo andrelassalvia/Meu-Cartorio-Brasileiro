@@ -11,7 +11,7 @@ class BrazilCityController extends Controller
     {
         $brazilCities = DB::table('brazil_cities')
             ->select('brazil_cities.id', 'brazil_cities.name')
-            ->where('brazilstate_id', $brazilState)
+            ->where('brazil_state_id', $brazilState)
             ->orderBy('name')
             ->get();
 

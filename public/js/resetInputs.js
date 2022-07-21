@@ -3,5 +3,6 @@ $(function () {
     $("#reset-button").on("click", function () {
         $("#form-search input").attr("value", "");
         $("#form-search option:selected").attr("selected", null);
+        $("#form-search input:checked").attr("checked", null);
     });
 });

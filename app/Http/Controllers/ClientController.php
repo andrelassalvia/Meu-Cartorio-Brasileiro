@@ -49,8 +49,8 @@ class ClientController extends Controller
         }
 
         $clients = Client::whereIn('client_status_id', $clientStatus_id)
-                    ->orderBy('updated_at')
-                    ->paginate(15);
+            ->latest('updated_at')
+            ->paginate(15);
 
         $clientStatus_id = implode(",", $clientStatus_id);
 

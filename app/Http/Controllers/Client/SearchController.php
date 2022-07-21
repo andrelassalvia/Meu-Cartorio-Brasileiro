@@ -98,22 +98,11 @@ class SearchController extends Controller
         return view(
             'client.listClients',
             compact(
-                'clients',
-                'title',
-                'clientStatus_id',
-                'dataForm',
-                'clientName',
-                'clientDemand',
-                'clientTel',
-                'clientBrazilStateId',
-                'clientFirma',
-                'clientCnh',
-                'clientCpf',
-                'clientDigitalCertification',
-                'clientPassport',
-                'clientCountry',
-                'clientCity'
-            )
-        );
+                'clients', 'title', 'clientStatus_id', 'dataForm',
+                'clientName', 'clientDemand', 'clientTel',
+                'clientBrazilStateId', 'clientFirma', 'clientCnh',
+                'clientCpf', 'clientDigitalCertification',
+                'clientPassport', 'clientCountry', 'clientCity'
+        ));
     }
 }

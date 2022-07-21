@@ -39,8 +39,8 @@ class ServiceOrder extends Model
     // ===== METHODS ===== //
     public function getUpdatedAtAttribute($value)
     {
-        if($value) {
-
+        if ($value) {
+            
             return Carbon::parse($value)->format('d-m-y');
         }
     }

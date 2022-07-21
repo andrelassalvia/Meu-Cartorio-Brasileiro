@@ -65,6 +65,8 @@ Route::resource('providers', 'App\Http\Controllers\ProviderController')
 ->middleware(['auth']);
 
 // SERVICE ORDERS
+Route::get('orders-search', 'App\Http\Controllers\Order\SearchOrderController@search')
+    ->middleware(['auth'])->name('orders.search');
 Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
     ->middleware(['auth']);
 

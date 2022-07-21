@@ -135,7 +135,7 @@
               
               {{-- Orders Running --}}
               <form action="{{ route('service-orders.index') }}" method="GET">
-                <input type="hidden" name="order_status_id" value="1">
+                <input type="hidden" name="order_status_id" value="1,2,3,4,5,6">
                 <button 
                   type="submit"
                   class="dropdown-item"

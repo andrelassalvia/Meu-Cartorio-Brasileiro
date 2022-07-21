@@ -19,12 +19,16 @@
         title="Nova ordem de serviço"
       />
     </x-slot>
-    <form action="" method="get">
+    <form action="{{ route('orders.search') }}" method="get" id="form-search">
       <div class="d-flex">
+
+        {{-- Order status --}}
+        <input type="hidden" name="order_status" value="{{ $orderStatus_id ?? "" }}">
         
         <div class="col-sm-6 mt-3">
 
           {{-- search for name --}}
+          @if (isset($clientName))
             <x-forms.inline-label
               colName="name"
               title="Nome do cliente"
@@ -32,30 +36,67 @@
               labelSize="3"
               type="text"
               req=""
-              reqValue=""
+              reqValue="{{ $clientName }}" 
             />
-  
-            {{-- search for fone --}}
+          @else
             <x-forms.inline-label
-              colName="tel"
-              title="Telefone do cliente"
-              colSize="5"
+              colName="name"
+              title="Nome do cliente"
+              colSize="7"
               labelSize="3"
               type="text"
               req=""
-              reqValue=""
+              reqValue="" 
             />
+          @endif
+  
+            {{-- search for fone --}}
+            @if (isset($clientTel))
+              <x-forms.inline-label
+                colName="tel"
+                title="Telefone"
+                colSize="5"
+                labelSize="3"
+                type="text"
+                req=""
+                reqValue="{{ $clientTel }}"
+              />
+            @else
+              <x-forms.inline-label
+                colName="tel"
+                title="Telefone"
+                colSize="5"
+                labelSize="3"
+                type="text"
+                req=""
+                reqValue=""
+              />
+            @endif
   
             {{-- Search for state in Brazil --}}
-            <x-forms.select-foreach
-              title="Estado"
-              colName='brazil_state_id'
-              colSize="4"
-              labelSize="3"
-              :array="$brazilStates"
-              :id="'brazil-state'"
-              req=""
-            />
+            @if (isset($clientBrazilStateId))
+              <x-forms.select-foreach
+                title="Estado"
+                colName='brazil_state_id'
+                colSize="4"
+                labelSize="3"
+                :array="$brazilStates"
+                :id="'brazil-state'"
+                req=""
+                reqValue="{{ $clientBrazilStateId }}"
+              />
+           @else
+              <x-forms.select-foreach
+                title="Estado"
+                colName='brazil_state_id'
+                colSize="4"
+                labelSize="3"
+                :array="$brazilStates"
+                :id="'brazil-state'"
+                req=""
+                reqValue=""
+              />
+            @endif
   
             {{-- Search for city in Brazil --}}
             <x-forms.select
@@ -70,26 +111,56 @@
         <div class="col-sm-6 mt-3">
 
           {{-- Search for service type --}}
-          <x-forms.select-foreach
-            title="Demanda"
-            colName="service_type_id"
-            colSize="4"
-            labelSize="3"
-            :array="$serviceTypes"
-            :id="'service-type'"
-            req=""
-          />
+          @if (isset($clientDemand))
+            <x-forms.select-foreach
+              title="Demanda"
+              colName="service_type_id"
+              colSize="4"
+              labelSize="3"
+              :array="$serviceTypes"
+              :id="'service-type'"
+              req=""
+              reqValue="{{ $clientDemand }}"
+            />
+          @else
+            <x-forms.select-foreach
+              title="Demanda"
+              colName="service_type_id"
+              colSize="4"
+              labelSize="3"
+              :array="$serviceTypes"
+              :id="'service-type'"
+              req=""
+              reqValue=""
+            />
+          @endif
   
           {{-- Status OS --}}
+          @if (isset($orderStatus_id) and $orderStatus_id == "7")
+            
+          @elseif(isset($status) and $status != null )
+            <x-forms.select-foreach
+              title="Status da ordem"
+              colName='order_status_id'
+              colSize="4"
+              labelSize="3"
+              :array="$orderStatus"
+              :id="'order-status'"
+              req=""
+              reqValue="{{ $status }}"
+            />
+          @else
           <x-forms.select-foreach
-            title="Status da ordem"
-            colName='order_status_id'
-            colSize="4"
-            labelSize="3"
-            :array="$orderStatus"
-            :id="'order-status'"
-            req=""
-          />
+              title="Status da ordem"
+              colName='order_status_id'
+              colSize="4"
+              labelSize="3"
+              :array="$orderStatus"
+              :id="'order-status'"
+              req=""
+              reqValue=""
+            />
+          @endif
   
           {{-- search for provider name --}}
           <x-forms.inline-label
@@ -195,10 +266,17 @@
       
     </table>
 
-       {{-- PAGINATION --}}
-    <x-tables.pagination
-      :array="$orders"
-    />
+    {{-- PAGINATION --}}
+    @if (isset($dataForm))
+      <x-tables.pagination-append
+        :array="$orders"
+        :dataform="$dataForm"
+      />
+    @else
+      <x-tables.pagination
+        :array="$orders"
+      />
+@endif
   </x-cards.card-main>
 
   {{-- Load cities to select --}}

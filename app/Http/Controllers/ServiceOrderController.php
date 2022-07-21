@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use App\Models\ServiceOrder;
 use Illuminate\Support\Carbon;
@@ -13,34 +14,40 @@ class ServiceOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  MUITAS QUERYS NO INDEX
+
     public function index(Request $request)
     {
-        switch ($request->orderstatus_id) {
-            case 1:
+        $orderStatus_id = $request->order_status_id;
+        $orderStatus_id = explode(",", $orderStatus_id);
+
+        switch ($request->order_status_id) {
+            case "1,2,3,4,5,6":
                 $title = 'Ordens em andamento';
-                $orders = ServiceOrder::whereNotIn('orderstatus_id', [7])
-                    ->with(['client', 'serviceType', 'orderStatus', 'provider'])
-                    ->orderBy('updated_at')
-                    ->paginate(15);
                 break;
-
-            case 7:
-                $title = 'Ordens encerradas';
-                $orders = ServiceOrder::where('orderstatus_id', [7])
-                    ->with(['client', 'serviceType', 'orderStatus', 'provider'])
-                    ->orderBy('updated_at')
-                    ->paginate(15);
+            case "1,2,3,4,5,6,7":
+                $title = 'Todas as ordens';
                 break;
-
             default:
-                $title = 'Lista de ordens';
-                $orders = ServiceOrder::orderBy('updated_at')->paginate(15);
+                $title = 'Ordens encerradas';
                 break;
         }
 
+        $orders = ServiceOrder::with(
+            [
+                'orderStatus', 'provider', 
+                'serviceType', 'client'
+                ])
+            ->whereIn('order_status_id', $orderStatus_id)
+            ->latest('updated_at')
+            ->paginate(15);
+
+        $orderStatus_id = implode(",", $orderStatus_id);
+
         return view(
             'order.listOrders',
-            compact('title', 'orders')
+            compact('title', 'orders', 'orderStatus_id')
         );
     }
 
