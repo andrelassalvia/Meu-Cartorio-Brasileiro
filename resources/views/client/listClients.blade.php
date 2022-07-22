@@ -20,7 +20,7 @@
     />
   </x-slot>
   
-  <form action="{{ route('clients.search') }}" method="get" id="form-search">
+  <form action="{{ route('search.clients') }}" method="get" id="form-search">
     <div class="d-flex">
 
       {{-- client status --}}
@@ -49,6 +49,9 @@
             req=""
             reqValue="" 
           />
+        @endif
+        @if ($errors->has('name'))
+          <p class="error">{{ $errors->first('name') }}</p>
         @endif
 
         {{-- search for fone --}}

@@ -22,27 +22,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // CLIENTS
-Route::get('clients-search', 'App\Http\Controllers\Client\SearchController@search')
-    ->middleware(['auth'])->name('clients.search');
 Route::resource('clients', 'App\Http\Controllers\ClientController')
     ->middleware(['auth']);
 
 // BRAZIL CITIES
-Route::prefix('brazilCities')
-    ->middleware(['auth'])
-    ->controller('App\Http\Controllers\BrazilCityController')
-    ->group(function(){
-        route::get('/{brazilState}', 'loadBrazilCities')
-            ->name('brazilCities.loadBrazilCities');
-    });
+Route::get('brazilCities/{brazilState}', 'App\Http\Controllers\BrazilCityController@loadBrazilCities')
+    ->middleware('[auth')
+    ->name('brazilCities.loadBrazilCities');
 
 // CITIES
-Route::prefix('cities')
-    ->middleware(['auth'])
-    ->controller('App\Http\Controllers\CityController')
-    ->group(function(){
-        route::get('/{country}', 'loadCities')->name('cities.loadCities');
-    });
+Route::get('cities/{country}', 'App\Http\Controllers\CitiController@loadCities')
+    ->middleware('[auth')
+    ->name('cities.loadCities');
 
 // COUNTRIES
 Route::resource('countries', 'App\Http\Controllers\CountryController')
@@ -64,9 +55,13 @@ Route::resource('occupations', 'App\Http\Controllers\OccupationController')
 Route::resource('providers', 'App\Http\Controllers\ProviderController')
 ->middleware(['auth']);
 
+// SEARCH
+Route::get('search-clients', 'App\Http\Controllers\SearchController@searchClients')
+    ->middleware(['auth'])->name('search.clients');
+Route::get('search-orders', 'App\Http\Controllers\SearchController@searchOrders')
+    ->middleware(['auth'])->name('search.orders');
+
 // SERVICE ORDERS
-Route::get('orders-search', 'App\Http\Controllers\Order\SearchOrderController@search')
-    ->middleware(['auth'])->name('orders.search');
 Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
     ->middleware(['auth']);
 

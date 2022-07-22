@@ -19,7 +19,7 @@
         title="Nova ordem de serviço"
       />
     </x-slot>
-    <form action="{{ route('orders.search') }}" method="get" id="form-search">
+    <form action="{{ route('search.orders') }}" method="get" id="form-search">
       <div class="d-flex">
 
         {{-- Order status --}}
@@ -137,7 +137,7 @@
   
           {{-- Status OS --}}
           @if (isset($orderStatus_id) and $orderStatus_id == "7")
-            
+            <input type="hidden" name="order_status_id" value="7">
           @elseif(isset($status) and $status != null )
             <x-forms.select-foreach
               title="Status da ordem"
@@ -163,26 +163,51 @@
           @endif
   
           {{-- search for provider name --}}
-          <x-forms.inline-label
-            colName="providerName"
-            title="Nome do cartório"
-            colSize="7"
-            labelSize="3"
-            type="text"
-            req=""
-            reqValue=""
-          />
+          @if (isset($providerName))
+            <x-forms.inline-label
+              colName="providerName"
+              title="Nome do cartório"
+              colSize="7"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue="{{ $providerName }}" 
+            />
+          @else
+            <x-forms.inline-label
+              colName="providerName"
+              title="Nome do cartório"
+              colSize="7"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue="" 
+            />
+          @endif
 
           {{-- search for provider contact --}}
-          <x-forms.inline-label
-            colName="contact"
-            title="Contato no cartório"
-            colSize="7"
-            labelSize="3"
-            type="text"
-            req=""
-            reqValue=""
-          />
+          @if (isset($contact))
+            <x-forms.inline-label
+              colName="contact"
+              title="Contato no cartório"
+              colSize="7"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue="{{ $contact }}" 
+            />
+          @else
+            <x-forms.inline-label
+              colName="contact"
+              title="Contato no cartório"
+              colSize="7"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue="" 
+            />
+          @endif
+          
         </div>
         
       </div>
@@ -279,8 +304,11 @@
 @endif
   </x-cards.card-main>
 
-  {{-- Load cities to select --}}
+{{-- Load cities to select --}}
 <script type="text/javascript" src="{{asset('js/loadCities.js')}}"></script>
+
+{{-- Reset inputs --}}
+<script type="text/javascript" src="{{ asset('js/resetInputs.js') }}"></script>
     
 @endsection
 
