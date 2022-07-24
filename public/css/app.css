@@ -10481,6 +10481,10 @@ main {
 #listClients form {
   margin-bottom: 20px;
 }
+#listClients form .error {
+  color: #f03e3e;
+  font-weight: 600;
+}
 #listClients .card-header .btn--create {
   color: #fff;
 }
@@ -10604,6 +10608,10 @@ main {
 
 #listOrders form {
   margin-bottom: 20px;
+}
+#listOrders form .error {
+  color: #f03e3e;
+  font-weight: 600;
 }
 #listOrders .card-header .btn--create {
   color: #fff;

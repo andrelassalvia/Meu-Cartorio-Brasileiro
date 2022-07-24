@@ -76,6 +76,9 @@
             reqValue=""
           />
         @endif
+        @if ($errors->has('tel'))
+          <p class="error">{{ $errors->first('tel') }}</p>
+        @endif
 
         {{-- Search for state in Brazil --}}
         @if (isset($clientBrazilStateId))
@@ -101,6 +104,9 @@
             reqValue=""
           />
         @endif
+        @if ($errors->has('brazil_state_id'))
+          <p class="error">{{ $errors->first('brazil_state_id') }}</p>
+        @endif
           
         {{-- Search for city in Brazil --}}
         <x-forms.select
@@ -110,6 +116,9 @@
           colSize="4"
           labelSize="3"
         />
+        @if ($errors->has('brazil_city_id'))
+          <p class="error">{{ $errors->first('brazil_city_id') }}</p>
+        @endif
 
       </div>
 
@@ -139,6 +148,9 @@
             reqValue=""
           />
         @endif
+        @if ($errors->has('service_type_id'))
+          <p class="error">{{ $errors->first('service_type_id') }}</p>
+        @endif
 
         {{-- Search for documents --}}
         <div class="search--check mb-3">
@@ -149,7 +161,7 @@
           @else
             <x-forms.check-grid title="Firma aberta" colName="firma_aberta"/>
           @endif
-
+          
           {{-- CNH --}}
           @if (isset($clientCnh) and $clientCnh == 1)
             <x-forms.checked-grid title="CNH" colName="cnh"/>
@@ -204,6 +216,9 @@
             reqValue=""
           />
         @endif
+        @if ($errors->has('country_id'))
+          <p class="error">{{ $errors->first('country_id') }}</p>
+        @endif
 
         {{-- Search form city --}}
         <x-forms.select
@@ -213,6 +228,9 @@
           colSize="4"
           labelSize="3"
         />
+        @if ($errors->has('city_id'))
+          <p class="error">{{ $errors->first('city_id') }}</p>
+        @endif
 
       </div>
       

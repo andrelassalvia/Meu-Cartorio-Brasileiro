@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\ServiceOrder;
 use App\Models\Provider;
-use Illuminate\Http\Request;
 use App\Http\Classes\Search;
+use App\Http\Requests\SearchRequest;
 
 class SearchController extends Controller
 {
@@ -21,14 +21,13 @@ class SearchController extends Controller
      * Method to search registers on clients model using the 
      * search fields on "Clientes" page
      */
-    public function searchClients(Request $request)
+    public function searchClients(SearchRequest $request)
     {
+        $dataForm = $request->validated();
+        
         // using search class to find registers on models
         $searchClients = new Search($this->client);
         $searchOrders = new Search($this->order);
-
-        // $dataForm wil be use in pagination
-        $dataForm = $request->all();
 
         // $clientStatus_id used in switch and to filter with page will be loaded
         $clientStatus_id = $request->client_status_id;
@@ -53,7 +52,11 @@ class SearchController extends Controller
         }
 
          // Structure to filter customers (does not include demand)
-        $dataClient = $request->except('service_type_id');
+        foreach ($dataForm as $key => $value){
+            if ($key !== 'service_type_id'){
+                $dataClient[$key] = $value;
+            }
+        }
         $clients = $searchClients->searchOnModels($dataClient)['numberRegisters']
             ->orderBy('name');
 
@@ -110,8 +113,9 @@ class SearchController extends Controller
      * Method to search registers on orders model using the 
      * search fields on "Ordens de serviço" page
      */
-    public function searchOrders(Request $request)
+    public function searchOrders(SearchRequest $request)
     {
+        // using search class to find registers on models
         $searchClients = new Search($this->client);
         $searchProviders = new Search($this->provider);
         $searchOrders = new Search($this->order);
@@ -119,7 +123,7 @@ class SearchController extends Controller
         $orderStatus_id = $request->order_status;
 
         // To use in pagination
-        $dataForm = $request->all();
+        $dataForm = $request->validated();
         
         // Define list title on page
         switch ($orderStatus_id) {
@@ -131,40 +135,36 @@ class SearchController extends Controller
                 break;
             }
 
-        // Return orders that match with the type of list ("finished orders" or "running orders")
-        // Mandatory if the filter doesn't have order status in request
-        $orderStatus_id = explode(",", $orderStatus_id);
-        $this->order = $this->order->whereIn('order_status_id', $orderStatus_id);
-
-         // variable to be used when filling the order status field
-         $status = null;
+        // variable to be used when filling the order status field
+        $status = null;
 
         // REQUESTS BY MODEL
         // Order
-        $dataOrder = request(
-            [
-            'service_type_id',
-            'order_status_id'
-            ]
-        );
+        if ($dataForm['order_status_id'] === null) {
+            $dataOrder = [
+                'service_type_id' => $dataForm['service_type_id'],
+                'order_status_id' => $dataForm['order_status']
+            ];
+        } else {
+            $dataOrder = [
+                'service_type_id' => $dataForm['service_type_id'],
+                'order_status_id' => $dataForm['order_status_id']
+            ];
+        }
 
         // client
-        $dataClient = request(
-            [
-                'name',
-                'tel',
-                'brazil_state_id',
-                'brazil_city_id'
-            ]
-        );
+        $dataClient = [
+            'name' => $dataForm['name'],
+            'tel' => $dataForm['tel'],
+            'brazil_state_id' => $dataForm['brazil_state_id'],
+            'brazil_city_id' => $dataForm['brazil_city_id']
+        ];
 
         // provider
-        $dataProvider = request(
-            [
-                'providerName',
-                'contact'
-            ]
-        );
+        $dataProvider = [
+            'providerName' => $dataForm['providerName'],
+            'contact' => $dataForm['contact']
+        ];
 
         // Swap key name for provider request to match with column name in table
         $dataProvider['name'] = $dataProvider['providerName'];
@@ -181,7 +181,8 @@ class SearchController extends Controller
         // Find all orders that match with dataOrder request
         $orders = $searchOrders->searchOnModels($dataOrder)['numberRegisters'];
 
-        $dataOrder['order_status_id'] !== null 
+        // Define status value to keep select field filled
+        $dataForm['order_status_id'] !== null 
         ? $status = $dataOrder['order_status_id'] 
         : $status = null;
 
@@ -221,9 +222,6 @@ class SearchController extends Controller
             ]
         )->latest('updated_at')
         ->paginate(15);
-
-        // Return order status variable to string to be used in future switch case
-        $orderStatus_id = implode(",", $orderStatus_id);
 
         // Variables to retrieve selected fields in previous filtering
         $clientName = $request->name;

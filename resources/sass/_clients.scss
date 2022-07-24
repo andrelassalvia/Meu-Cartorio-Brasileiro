@@ -33,6 +33,11 @@
 #listClients {
     form {
         margin-bottom: 20px;
+
+        .error {
+            color: $error;
+            font-weight: 600;
+        }
     }
 
     .card-header {

@@ -24,6 +24,9 @@
 
         {{-- Order status --}}
         <input type="hidden" name="order_status" value="{{ $orderStatus_id ?? "" }}">
+        @if ($errors->has('order_status'))
+          <p class="error">{{ $errors->first('order_status') }}</p>
+        @endif
         
         <div class="col-sm-6 mt-3">
 
@@ -49,63 +52,75 @@
               reqValue="" 
             />
           @endif
+          @if ($errors->has('name'))
+            <p class="error">{{ $errors->first('name') }}</p>
+          @endif
   
-            {{-- search for fone --}}
-            @if (isset($clientTel))
-              <x-forms.inline-label
-                colName="tel"
-                title="Telefone"
-                colSize="5"
-                labelSize="3"
-                type="text"
-                req=""
-                reqValue="{{ $clientTel }}"
-              />
-            @else
-              <x-forms.inline-label
-                colName="tel"
-                title="Telefone"
-                colSize="5"
-                labelSize="3"
-                type="text"
-                req=""
-                reqValue=""
-              />
-            @endif
+          {{-- search for fone --}}
+          @if (isset($clientTel))
+            <x-forms.inline-label
+              colName="tel"
+              title="Telefone"
+              colSize="5"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue="{{ $clientTel }}"
+            />
+          @else
+            <x-forms.inline-label
+              colName="tel"
+              title="Telefone"
+              colSize="5"
+              labelSize="3"
+              type="text"
+              req=""
+              reqValue=""
+            />
+          @endif
+          @if ($errors->has('tel'))
+            <p class="error">{{ $errors->first('tel') }}</p>
+          @endif
   
-            {{-- Search for state in Brazil --}}
-            @if (isset($clientBrazilStateId))
-              <x-forms.select-foreach
-                title="Estado"
-                colName='brazil_state_id'
-                colSize="4"
-                labelSize="3"
-                :array="$brazilStates"
-                :id="'brazil-state'"
-                req=""
-                reqValue="{{ $clientBrazilStateId }}"
-              />
-           @else
-              <x-forms.select-foreach
-                title="Estado"
-                colName='brazil_state_id'
-                colSize="4"
-                labelSize="3"
-                :array="$brazilStates"
-                :id="'brazil-state'"
-                req=""
-                reqValue=""
-              />
-            @endif
-  
-            {{-- Search for city in Brazil --}}
-            <x-forms.select
-              title="Cidade"
-              colName="brazil_city_id"
-              :id="'brazil-city'"
+          {{-- Search for state in Brazil --}}
+          @if (isset($clientBrazilStateId))
+            <x-forms.select-foreach
+              title="Estado"
+              colName='brazil_state_id'
               colSize="4"
               labelSize="3"
+              :array="$brazilStates"
+              :id="'brazil-state'"
+              req=""
+              reqValue="{{ $clientBrazilStateId }}"
             />
+          @else
+            <x-forms.select-foreach
+              title="Estado"
+              colName='brazil_state_id'
+              colSize="4"
+              labelSize="3"
+              :array="$brazilStates"
+              :id="'brazil-state'"
+              req=""
+              reqValue=""
+            />
+          @endif
+          @if ($errors->has('brazil_state_id'))
+            <p class="error">{{ $errors->first('brazil_state_id') }}</p>
+          @endif
+  
+          {{-- Search for city in Brazil --}}
+          <x-forms.select
+            title="Cidade"
+            colName="brazil_city_id"
+            :id="'brazil-city'"
+            colSize="4"
+            labelSize="3"
+          />
+          @if ($errors->has('brazil_city_id'))
+            <p class="error">{{ $errors->first('brazil_city_id') }}</p>
+          @endif
         </div>
   
         <div class="col-sm-6 mt-3">
@@ -134,7 +149,10 @@
               reqValue=""
             />
           @endif
-  
+          @if ($errors->has('service_type_id'))
+            <p class="error">{{ $errors->first('service_type_id') }}</p>
+          @endif
+    
           {{-- Status OS --}}
           @if (isset($orderStatus_id) and $orderStatus_id == "7")
             <input type="hidden" name="order_status_id" value="7">
@@ -161,7 +179,10 @@
               reqValue=""
             />
           @endif
-  
+          @if ($errors->has('order_status_id'))
+            <p class="error">{{ $errors->first('order_status_id') }}</p>
+          @endif
+    
           {{-- search for provider name --}}
           @if (isset($providerName))
             <x-forms.inline-label
@@ -183,6 +204,9 @@
               req=""
               reqValue="" 
             />
+          @endif
+          @if ($errors->has('providerName'))
+            <p class="error">{{ $errors->first('providerName') }}</p>
           @endif
 
           {{-- search for provider contact --}}
@@ -206,6 +230,9 @@
               req=""
               reqValue="" 
             />
+          @endif
+          @if ($errors->has('contact'))
+            <p class="error">{{ $errors->first('contact') }}</p>
           @endif
           
         </div>
@@ -301,7 +328,7 @@
       <x-tables.pagination
         :array="$orders"
       />
-@endif
+    @endif
   </x-cards.card-main>
 
 {{-- Load cities to select --}}

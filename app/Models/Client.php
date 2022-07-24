@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 class Client extends Model
 {
@@ -102,5 +101,10 @@ class Client extends Model
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-y');
+    }
+
+    public function setNameAttribute($value)
+    {
+        return filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 }
