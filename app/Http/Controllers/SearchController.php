@@ -7,6 +7,7 @@ use App\Models\ServiceOrder;
 use App\Models\Provider;
 use App\Http\Classes\Search;
 use App\Http\Requests\SearchRequest;
+use Illuminate\Pipeline\Pipeline;
 
 class SearchController extends Controller
 {
@@ -23,8 +24,14 @@ class SearchController extends Controller
      */
     public function searchClients(SearchRequest $request)
     {
-        $dataForm = $request->validated();
-        
+        // pipeline to sanitize request
+        $dataForm = app(Pipeline::class)
+            ->send($request)
+            ->through([
+                \App\Http\Middleware\SearchSanitizeMiddleware::class,
+            ])
+            ->thenReturn();
+
         // using search class to find registers on models
         $searchClients = new Search($this->client);
         $searchOrders = new Search($this->order);
@@ -57,6 +64,7 @@ class SearchController extends Controller
                 $dataClient[$key] = $value;
             }
         }
+        // dd($dataClient);
         $clients = $searchClients->searchOnModels($dataClient)['numberRegisters']
             ->orderBy('name');
 

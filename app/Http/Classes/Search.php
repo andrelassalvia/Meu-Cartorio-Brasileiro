@@ -18,19 +18,19 @@ class Search
     $amountKeys = 0;
 
     foreach ($data as $key => $value) {
-
+      
       if ($value !== null) {
-
+        
         // Find checkbox
-        if (is_string($value) and $value == "on") {
+        if (is_bool($value) and $value == "true") {
           $this->model = $this->model->whereIn($key, [true]);
           $amountKeys += 1;
-
+          
           // find foreign ids
-        } elseif (is_numeric($value) and $key !== 'tel') {
-            $this->model = $this->model->where($key, $value);
-            $amountKeys += 1;
-
+        } elseif (is_int($value) or (is_numeric($value) and $key !== 'tel')) {
+          $this->model = $this->model->where($key, $value);
+          $amountKeys += 1;
+          
           // find foreign ids with multiple values to list
         } elseif (is_string($value) and Str::contains($value, ',')) {
             $ids = explode(',', $value);

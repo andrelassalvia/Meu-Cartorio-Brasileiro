@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\SearchSanitizeMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,7 @@ Route::resource('clients', 'App\Http\Controllers\ClientController')
 
 // BRAZIL CITIES
 Route::get('brazilCities/{brazilState}', 'App\Http\Controllers\BrazilCityController@loadBrazilCities')
-    ->middleware('[auth')
+    ->middleware(['auth'])
     ->name('brazilCities.loadBrazilCities');
 
 // CITIES
@@ -42,12 +42,14 @@ Route::resource('countries', 'App\Http\Controllers\CountryController')
 // MARITAL STATUS
 Route::view('/marital-status-main', 'marital.main')
     ->name('marital-status-main.main');
+
 Route::resource('marital-status', 'App\Http\Controllers\MaritalStatusController')
     ->middleware(['auth']);
 
 // OCCUPATIONS
 Route::view('/occupations-main', 'occupation.main')
     ->name('occupations-main.main');
+
 Route::resource('occupations', 'App\Http\Controllers\OccupationController')
     ->middleware(['auth']);
 
@@ -56,10 +58,12 @@ Route::resource('providers', 'App\Http\Controllers\ProviderController')
 ->middleware(['auth']);
 
 // SEARCH
-Route::get('search-clients', 'App\Http\Controllers\SearchController@searchClients')
-    ->middleware(['auth'])->name('search.clients');
-Route::get('search-orders', 'App\Http\Controllers\SearchController@searchOrders')
-    ->middleware(['auth'])->name('search.orders');
+Route::middleware(['auth'])->group(function(){
+    route::get('search-clients', 'App\Http\Controllers\SearchController@searchClients')
+        ->name('search.clients');
+    route::get('search-orders', 'App\Http\Controllers\SearchController@searchOrders')
+        ->name('search.orders');
+});
 
 // SERVICE ORDERS
 Route::resource('service-orders', 'App\Http\Controllers\ServiceOrderController')
